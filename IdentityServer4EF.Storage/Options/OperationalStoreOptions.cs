@@ -42,7 +42,7 @@ namespace IdentityServer4.EntityFramework.Options
         /// <value>
         /// The persisted grants.
         /// </value>
-        public TableConfiguration PersistedGrants { get; set; } = new TableConfiguration("PersistedGrants");
+        //public TableConfiguration PersistedGrants { get; set; } = new TableConfiguration("PersistedGrants");
 
         /// <summary>
         /// Gets or sets the device flow codes table configuration.
@@ -50,7 +50,7 @@ namespace IdentityServer4.EntityFramework.Options
         /// <value>
         /// The device flow codes.
         /// </value>
-        public TableConfiguration DeviceFlowCodes { get; set; } = new TableConfiguration("DeviceCodes");
+        //public TableConfiguration DeviceFlowCodes { get; set; } = new TableConfiguration("DeviceCodes");
 
         /// <summary>
         /// Gets or sets a value indicating whether stale entries will be automatically cleaned up from the database.

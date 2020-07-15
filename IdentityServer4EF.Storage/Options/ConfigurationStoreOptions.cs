@@ -42,14 +42,14 @@ namespace IdentityServer4.EntityFramework.Options
         /// <value>
         /// The identity resource.
         /// </value>
-        public TableConfiguration IdentityResource { get; set; } = new TableConfiguration("IdentityResources");
+        //public TableConfiguration IdentityResource { get; set; } = new TableConfiguration("IdentityResources");
         /// <summary>
         /// Gets or sets the identity claim table configuration.
         /// </summary>
         /// <value>
         /// The identity claim.
         /// </value>
-        public TableConfiguration IdentityClaim { get; set; } = new TableConfiguration("IdentityClaims");
+        //public TableConfiguration IdentityClaim { get; set; } = new TableConfiguration("IdentityClaims");
 
         /// <summary>
         /// Gets or sets the API resource table configuration.
@@ -78,14 +78,14 @@ namespace IdentityServer4.EntityFramework.Options
         /// <value>
         /// The API claim.
         /// </value>
-        public TableConfiguration ApiClaim { get; set; } = new TableConfiguration("ApiClaims");
+        //public TableConfiguration ApiClaim { get; set; } = new TableConfiguration("ApiClaims");
         /// <summary>
         /// Gets or sets the API scope claim table configuration.
         /// </summary>
         /// <value>
         /// The API scope claim.
         /// </value>
-        public TableConfiguration ApiScopeClaim { get; set; } = new TableConfiguration("ApiScopeClaims");
+        //public TableConfiguration ApiScopeClaim { get; set; } = new TableConfiguration("ApiScopeClaims");
 
         /// <summary>
         /// Gets or sets the client table configuration.
@@ -135,14 +135,14 @@ namespace IdentityServer4.EntityFramework.Options
         /// <value>
         /// The client claim.
         /// </value>
-        public TableConfiguration ClientClaim { get; set; } = new TableConfiguration("ClientClaims");
+        //public TableConfiguration ClientClaim { get; set; } = new TableConfiguration("ClientClaims");
         /// <summary>
         /// Gets or sets the client IdP restriction table configuration.
         /// </summary>
         /// <value>
         /// The client IdP restriction.
         /// </value>
-        public TableConfiguration ClientIdPRestriction { get; set; } = new TableConfiguration("ClientIdPRestrictions");
+        //public TableConfiguration ClientIdPRestriction { get; set; } = new TableConfiguration("ClientIdPRestrictions");
         /// <summary>
         /// Gets or sets the client cors origin table configuration.
         /// </summary>
@@ -156,20 +156,20 @@ namespace IdentityServer4.EntityFramework.Options
         /// <value>
         /// The client property.
         /// </value>
-        public TableConfiguration ClientProperty { get; set; } = new TableConfiguration("ClientProperties");
+        //public TableConfiguration ClientProperty { get; set; } = new TableConfiguration("ClientProperties");
         /// <summary>
         /// Gets or sets the API resource property table configuration.
         /// </summary>
         /// <value>
         /// The client property.
         /// </value>
-        public TableConfiguration ApiResourceProperty { get; set; } = new TableConfiguration("ApiProperties");
+        //public TableConfiguration ApiResourceProperty { get; set; } = new TableConfiguration("ApiProperties");
         /// <summary>
         /// Gets or sets the identity resource property table configuration.
         /// </summary>
         /// <value>
         /// The client property.
         /// </value>
-        public TableConfiguration IdentityResourceProperty { get; set; } = new TableConfiguration("IdentityProperties");
+       // public TableConfiguration IdentityResourceProperty { get; set; } = new TableConfiguration("IdentityProperties");
     }
 }
