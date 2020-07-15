@@ -32,20 +32,20 @@ namespace IdentityServer
 
 
 
-                scope.ServiceProvider.GetRequiredService<PersistedGrantDbContext>().Database.Migrate();
+                //scope.ServiceProvider.GetRequiredService<PersistedGrantDbContext>().Database.Migrate();
 
-                var context = scope.ServiceProvider.GetRequiredService<ConfigurationDbContext>();
+                //var context = scope.ServiceProvider.GetRequiredService<ConfigurationDbContext>();
 
-                context.Database.Migrate();
+                //context.Database.Migrate();
 
-                if (!context.ApiResources.Any())
-                {
-                    foreach (var resource in Configuration.GetApis())
-                    {
-                        context.ApiResources.Add(resource);
-                    }
-                    context.SaveChanges();
-                }
+                //if (!context.ApiResources.Any())
+                //{
+                //    foreach (var resource in Configuration.GetApis())
+                //    {
+                //        context.ApiResources.Add(resource);
+                //    }
+                //    context.SaveChanges();
+                //}
 
                 //if (!context.IdentityResources.Any())
                 //{
@@ -57,14 +57,14 @@ namespace IdentityServer
                 //}
 
 
-                if (!context.Clientes.Any())
-                {
-                    foreach (var clientes in Configuration.GetClients())
-                    {
-                        context.Clientes.Add(clientes);
-                    }
-                    context.SaveChanges();
-                }
+                //if (!context.Clientes.Any())
+                //{
+                //    foreach (var clientes in Configuration.GetClients())
+                //    {
+                //        context.Clientes.Add(clientes);
+                //    }
+                //    context.SaveChanges();
+                //}
 
             }
 

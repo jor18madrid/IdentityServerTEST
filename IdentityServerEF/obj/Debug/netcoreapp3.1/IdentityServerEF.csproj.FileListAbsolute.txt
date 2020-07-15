@@ -1,0 +1,12 @@
+C:\Users\Jor18Madrid\Source\Repos\IdentityServer2\IdentityServerEF\bin\Debug\netcoreapp3.1\IdentityServerEF.deps.json
+C:\Users\Jor18Madrid\Source\Repos\IdentityServer2\IdentityServerEF\bin\Debug\netcoreapp3.1\IdentityServerEF.dll
+C:\Users\Jor18Madrid\Source\Repos\IdentityServer2\IdentityServerEF\bin\Debug\netcoreapp3.1\IdentityServerEF.pdb
+C:\Users\Jor18Madrid\Source\Repos\IdentityServer2\IdentityServerEF\bin\Debug\netcoreapp3.1\IdentityServer4EF.Storage.dll
+C:\Users\Jor18Madrid\Source\Repos\IdentityServer2\IdentityServerEF\bin\Debug\netcoreapp3.1\IdentityServer4EF.Storage.pdb
+C:\Users\Jor18Madrid\Source\Repos\IdentityServer2\IdentityServerEF\obj\Debug\netcoreapp3.1\IdentityServerEF.csprojAssemblyReference.cache
+C:\Users\Jor18Madrid\Source\Repos\IdentityServer2\IdentityServerEF\obj\Debug\netcoreapp3.1\IdentityServerEF.AssemblyInfoInputs.cache
+C:\Users\Jor18Madrid\Source\Repos\IdentityServer2\IdentityServerEF\obj\Debug\netcoreapp3.1\IdentityServerEF.AssemblyInfo.cs
+C:\Users\Jor18Madrid\Source\Repos\IdentityServer2\IdentityServerEF\obj\Debug\netcoreapp3.1\IdentityServerEF.csproj.CoreCompileInputs.cache
+C:\Users\Jor18Madrid\Source\Repos\IdentityServer2\IdentityServerEF\obj\Debug\netcoreapp3.1\IdentityServerEF.csproj.CopyComplete
+C:\Users\Jor18Madrid\Source\Repos\IdentityServer2\IdentityServerEF\obj\Debug\netcoreapp3.1\IdentityServerEF.dll
+C:\Users\Jor18Madrid\Source\Repos\IdentityServer2\IdentityServerEF\obj\Debug\netcoreapp3.1\IdentityServerEF.pdb
