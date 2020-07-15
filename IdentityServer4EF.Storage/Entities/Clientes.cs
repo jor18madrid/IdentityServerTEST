@@ -48,14 +48,14 @@ namespace IdentityServer4.EntityFramework.Entities
         public int RefreshTokenExpiration { get; set; } = (int)TokenExpiration.Absolute;
         public int AccessTokenType { get; set; } = (int)0; // AccessTokenType.Jwt;
         public bool EnableLocalLogin { get; set; } = true;
-        public List<ClientIdPRestriction> IdentityProviderRestrictions { get; set; }
+        //public List<ClientIdPRestriction> IdentityProviderRestrictions { get; set; }
         public bool IncludeJwtId { get; set; }
-        public List<ClientClaim> Claims { get; set; }
+        //public List<ClientClaim> Claims { get; set; }
         public bool AlwaysSendClientClaims { get; set; }
         public string ClientClaimsPrefix { get; set; } = "client_";
         public string PairWiseSubjectSalt { get; set; }
         public List<ClientCorsOrigin> AllowedCorsOrigins { get; set; }
-        public List<ClientProperty> Properties { get; set; }
+        //public List<ClientProperty> Properties { get; set; }
         public DateTime Created { get; set; } = DateTime.UtcNow;
         public DateTime? Updated { get; set; }
         public DateTime? LastAccessed { get; set; }

@@ -5,8 +5,21 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Data\Migrations\IdentityServer\**" />
+    <Content Remove="Data\Migrations\IdentityServer\**" />
+    <EmbeddedResource Remove="Data\Migrations\IdentityServer\**" />
+    <None Remove="Data\Migrations\IdentityServer\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Compile Remove="IdentityServerEntityFrameworkBuilderExtensions.cs" />
     <Compile Remove="TokenCleanupHost.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Include="Data\Migrations\IdentityServer\ConfigurationDbTEST\20200715134441_InitialConfigurationDbMigrationTEST.cs" />
+    <Compile Include="Data\Migrations\IdentityServer\ConfigurationDbTEST\20200715134441_InitialConfigurationDbMigrationTEST.Designer.cs" />
+    <Compile Include="Data\Migrations\IdentityServer\ConfigurationDbTEST\ConfigurationDbContextModelSnapshot.cs" />
   </ItemGroup>
 
   <ItemGroup>

@@ -50,10 +50,10 @@ namespace IdentityServer4.EntityFramework.Stores
                 .Include(x => x.PostLogoutRedirectUris)
                 .Include(x => x.AllowedScopes)
                 .Include(x => x.ClientSecrets)
-                .Include(x => x.Claims)
-                .Include(x => x.IdentityProviderRestrictions)
+                //.Include(x => x.Claims)
+                //.Include(x => x.IdentityProviderRestrictions)
                 .Include(x => x.AllowedCorsOrigins)
-                .Include(x => x.Properties)
+                //.Include(x => x.Properties)
                 .AsNoTracking()
                 .FirstOrDefault(x => x.ClientId == clientId);
             var model = client?.ToModel();

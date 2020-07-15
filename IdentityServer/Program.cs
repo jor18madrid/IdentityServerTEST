@@ -8,6 +8,11 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System.Linq;
 using System.Security.Claims;
+using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Logging;
 
 namespace IdentityServer
 {
@@ -15,9 +20,9 @@ namespace IdentityServer
     {
         public static void Main(string[] args)
         {
-            var host = CreateHostBuilder(args).Build();
+            var webhost = CreateHostBuilder(args).Build();
             
-            using (var scope = host.Services.CreateScope())
+            using (var scope = webhost.Services.CreateScope())
             {
 
 
@@ -27,20 +32,20 @@ namespace IdentityServer
 
 
 
-                //scope.ServiceProvider.GetRequiredService<PersistedGrantDbContext>().Database.Migrate();
+                scope.ServiceProvider.GetRequiredService<PersistedGrantDbContext>().Database.Migrate();
 
-                //var context = scope.ServiceProvider.GetRequiredService<ConfigurationDbContext>();
+                var context = scope.ServiceProvider.GetRequiredService<ConfigurationDbContext>();
 
-                //context.Database.Migrate();
+                context.Database.Migrate();
 
-                //if (!context.ApiResources.Any())
-                //{
-                //    foreach (var resource in Configuration.GetApis())
-                //    {
-                //        context.ApiResources.Add(resource);
-                //    }
-                //    context.SaveChanges();
-                //}
+                if (!context.ApiResources.Any())
+                {
+                    foreach (var resource in Configuration.GetApis())
+                    {
+                        context.ApiResources.Add(resource);
+                    }
+                    context.SaveChanges();
+                }
 
                 //if (!context.IdentityResources.Any())
                 //{
@@ -52,18 +57,18 @@ namespace IdentityServer
                 //}
 
 
-                //if (!context.Clientes.Any())
-                //{
-                //    foreach (var clientes in Configuration.GetClients())
-                //    {
-                //        context.Clientes.Add(clientes);
-                //    }
-                //    context.SaveChanges();
-                //}
+                if (!context.Clientes.Any())
+                {
+                    foreach (var clientes in Configuration.GetClients())
+                    {
+                        context.Clientes.Add(clientes);
+                    }
+                    context.SaveChanges();
+                }
 
             }
 
-            host.Run();
+            webhost.Run();
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
@@ -72,5 +77,19 @@ namespace IdentityServer
                 {
                     webBuilder.UseStartup<Startup>();
                 });
+        //    public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
+        //WebHost.CreateDefaultBuilder(args)
+        //    .UseStartup<Startup>();
     }
 }
+
+
+
+//public static void Main(string[] args)
+//{
+//    CreateWebHostBuilder(args).Build().Run();
+//}
+
+//public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
+//    WebHost.CreateDefaultBuilder(args)
+//        .UseStartup<Startup>();

@@ -29,7 +29,7 @@ namespace IdentityServer4.EntityFramework.Interfaces
         /// <value>
         /// The identity resources.
         /// </value>
-        DbSet<IdentityResource> IdentityResources { get; set; }
+        //DbSet<IdentityResource> IdentityResources { get; set; }
         
         /// <summary>
         /// Gets or sets the API resources.

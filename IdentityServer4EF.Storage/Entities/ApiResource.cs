@@ -17,8 +17,8 @@ namespace IdentityServer4.EntityFramework.Entities
         public string DESCRIPCION { get; set; }
         public List<ApiSecret> SECRETS { get; set; }
         public List<ApiScope> SCOPES { get; set; }
-        public List<ApiResourceClaim> USERCLAIMS { get; set; }
-        public List<ApiResourceProperty> PROPIEDADES { get; set; }
+        //public List<ApiResourceClaim> USERCLAIMS { get; set; }
+        //public List<ApiResourceProperty> PROPIEDADES { get; set; }
         public DateTime FECHACREACION { get; set; } = DateTime.Now;
         public DateTime? FECHAMODIFICACION { get; set; }
         public DateTime? FECHAULTIMOACCESO { get; set; }

@@ -93,7 +93,7 @@ namespace IdentityServer4.EntityFramework.DbContexts
         /// </remarks>
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.ConfigurePersistedGrantContext(storeOptions);
+            //modelBuilder.ConfigurePersistedGrantContext(storeOptions);
 
             base.OnModelCreating(modelBuilder);
         }

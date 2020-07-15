@@ -66,7 +66,7 @@ namespace IdentityServer4.EntityFramework.DbContexts
         /// <value>
         /// The identity resources.
         /// </value>
-        public DbSet<IdentityResource> IdentityResources { get; set; }
+        //public DbSet<IdentityResource> IdentityResources { get; set; }
         /// <summary>
         /// Gets or sets the API resources.
         /// </summary>
