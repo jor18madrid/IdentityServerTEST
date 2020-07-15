@@ -1,0 +1,45 @@
+﻿@model LoginViewModel
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
+</head>
+<body>
+    <form asp-controller="Auth" asp-action="ExternalLogin"
+          asp-route-returnUrl="@Model.ReturnUrl" method="post">
+
+        @*@foreach (var provider in Model.ExternalProviders)
+                    {
+            <button name="provider"
+                    type="submit"
+                    value="@provider.Name">
+                @provider.Name
+            </button>}*@
+    </form>
+
+    <form asp-controller="Auth" asp-action="Login" method="post">
+        <input type="hidden" asp-for="ReturnUrl" />
+        <span asp-validation-for="ReturnUrl"></span>
+
+        <div class="col-md-3 form-horizontal">
+            <br/>
+            <br/>
+            <label>Usuario</label>
+            <input asp-for="Username" class="form-control" value="admin" />
+            <span asp-validation-for="Username"></span>
+
+            <label>Contraseña</label>
+            <input asp-for="Password" class="form-control" value="admin" />
+            <span asp-validation-for="Password"></span>
+
+            <br />
+            <button class="btn btn-primary" type="submit">
+                Iniciar Sesión
+            </button>
+        </div>
+    </form>
+
+</body>
+</html>
