@@ -40,7 +40,6 @@ C:\Users\Jor18Madrid\Source\Repos\IdentityServer2\Worker\bin\Debug\netcoreapp3.1
 C:\Users\Jor18Madrid\Source\Repos\IdentityServer2\Worker\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Tokens.dll
 C:\Users\Jor18Madrid\Source\Repos\IdentityServer2\Worker\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
 C:\Users\Jor18Madrid\Source\Repos\IdentityServer2\Worker\bin\Debug\netcoreapp3.1\System.IdentityModel.Tokens.Jwt.dll
-C:\Users\Jor18Madrid\Source\Repos\IdentityServer2\Worker\obj\Debug\netcoreapp3.1\Worker.csprojAssemblyReference.cache
 C:\Users\Jor18Madrid\Source\Repos\IdentityServer2\Worker\obj\Debug\netcoreapp3.1\Worker.AssemblyInfoInputs.cache
 C:\Users\Jor18Madrid\Source\Repos\IdentityServer2\Worker\obj\Debug\netcoreapp3.1\Worker.AssemblyInfo.cs
 C:\Users\Jor18Madrid\Source\Repos\IdentityServer2\Worker\obj\Debug\netcoreapp3.1\Worker.csproj.CoreCompileInputs.cache

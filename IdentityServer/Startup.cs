@@ -28,31 +28,31 @@ namespace IdentityServer
 
             string migrationsAssembly = typeof(Startup).GetTypeInfo().Assembly.GetName().Name;
 
-            services.AddDbContext<AppDbContext>(config =>
-            {
-                //config.UseOracle(connectionString);
-                config.UseInMemoryDatabase("Memory");
-            });
+            //services.AddDbContext<AppDbContext>(config =>
+            //{
+            //    //config.UseOracle(connectionString);
+            //    config.UseInMemoryDatabase("Memory");
+            //});
 
-            services.AddIdentity<IdentityUser, IdentityRole>(config =>
-            {
-                config.Password.RequiredLength = 4;
-                config.Password.RequireDigit = false;
-                config.Password.RequireNonAlphanumeric = false;
-                config.Password.RequireUppercase = false;
-            })
-                .AddEntityFrameworkStores<AppDbContext>()
-                .AddDefaultTokenProviders();
+            //services.AddIdentity<IdentityUser, IdentityRole>(config =>
+            //{
+            //    config.Password.RequiredLength = 4;
+            //    config.Password.RequireDigit = false;
+            //    config.Password.RequireNonAlphanumeric = false;
+            //    config.Password.RequireUppercase = false;
+            //})
+            //    .AddEntityFrameworkStores<AppDbContext>()
+            //    .AddDefaultTokenProviders();
 
-            services.ConfigureApplicationCookie(config =>
-            {
-                config.Cookie.Name = "IdentityServer.Cookie";
-                config.LoginPath = "/Auth/Login";
-                config.LogoutPath = "/Auth/Logout";
-            });
+            //services.ConfigureApplicationCookie(config =>
+            //{
+            //    config.Cookie.Name = "IdentityServer.Cookie";
+            //    config.LoginPath = "/Auth/Login";
+            //    config.LogoutPath = "/Auth/Logout";
+            //});
 
             services.AddIdentityServer()
-                .AddAspNetIdentity<IdentityUser>()
+                //.AddAspNetIdentity<IdentityUser>()
                 .AddDeveloperSigningCredential()
                 // this adds the config data from DB (clients, resources, CORS)
                 .AddConfigurationStore(options =>
@@ -61,16 +61,17 @@ namespace IdentityServer
                             bd => bd.MigrationsAssembly(migrationsAssembly));
                 })
                 // this adds the operational data from DB (codes, tokens, consents)
-                .AddOperationalStore(options =>
-                {
-                    options.ConfigureDbContext = builder => builder.UseOracle(connectionString,
-                            bd => bd.MigrationsAssembly(migrationsAssembly));
+                //.AddOperationalStore(options =>
+                //{
+                //    options.ConfigureDbContext = builder => builder.UseOracle(connectionString,
+                //            bd => bd.MigrationsAssembly(migrationsAssembly));
 
-                    // this enables automatic token cleanup. this is optional.
-                    options.EnableTokenCleanup = true;
-                    options.TokenCleanupInterval = 30; // interval in seconds, short for testing
-                    //options.DefaultSchema = "IdentityServer";
-                });
+                //    // this enables automatic token cleanup. this is optional.
+                //    options.EnableTokenCleanup = true;
+                //    options.TokenCleanupInterval = 30; // interval in seconds, short for testing
+                //    //options.DefaultSchema = "IdentityServer";
+                //})
+                ;
             // this is something you will want in production to reduce load on and requests to the DB
             services.AddCors(confg =>
                  confg.AddPolicy("AllowAll",

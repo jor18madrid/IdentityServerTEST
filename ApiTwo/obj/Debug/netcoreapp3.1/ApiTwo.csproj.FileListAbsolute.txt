@@ -16,7 +16,6 @@ C:\Users\Jor18Madrid\Source\Repos\IdentityServer2\ApiTwo\bin\Debug\netcoreapp3.1
 C:\Users\Jor18Madrid\Source\Repos\IdentityServer2\ApiTwo\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Tokens.dll
 C:\Users\Jor18Madrid\Source\Repos\IdentityServer2\ApiTwo\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
 C:\Users\Jor18Madrid\Source\Repos\IdentityServer2\ApiTwo\bin\Debug\netcoreapp3.1\System.IdentityModel.Tokens.Jwt.dll
-C:\Users\Jor18Madrid\Source\Repos\IdentityServer2\ApiTwo\obj\Debug\netcoreapp3.1\ApiTwo.csprojAssemblyReference.cache
 C:\Users\Jor18Madrid\Source\Repos\IdentityServer2\ApiTwo\obj\Debug\netcoreapp3.1\ApiTwo.AssemblyInfoInputs.cache
 C:\Users\Jor18Madrid\Source\Repos\IdentityServer2\ApiTwo\obj\Debug\netcoreapp3.1\ApiTwo.AssemblyInfo.cs
 C:\Users\Jor18Madrid\Source\Repos\IdentityServer2\ApiTwo\obj\Debug\netcoreapp3.1\ApiTwo.csproj.CoreCompileInputs.cache

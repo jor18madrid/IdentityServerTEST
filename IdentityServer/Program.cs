@@ -26,9 +26,9 @@ namespace IdentityServer
             {
 
 
-                var userManager = scope.ServiceProvider.GetRequiredService<UserManager<IdentityUser>>();
-                var user = new IdentityUser("admin");
-                userManager.CreateAsync(user, "admin").GetAwaiter().GetResult();
+                //var userManager = scope.ServiceProvider.GetRequiredService<UserManager<IdentityUser>>();
+                //var user = new IdentityUser("admin");
+                //userManager.CreateAsync(user, "admin").GetAwaiter().GetResult();
 
 
 

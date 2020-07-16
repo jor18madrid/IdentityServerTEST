@@ -15,6 +15,7 @@ C:\Users\Jor18Madrid\Source\Repos\IdentityServer2\ApiTest\bin\Debug\netcoreapp3.
 C:\Users\Jor18Madrid\Source\Repos\IdentityServer2\ApiTest\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Tokens.dll
 C:\Users\Jor18Madrid\Source\Repos\IdentityServer2\ApiTest\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
 C:\Users\Jor18Madrid\Source\Repos\IdentityServer2\ApiTest\bin\Debug\netcoreapp3.1\System.IdentityModel.Tokens.Jwt.dll
+C:\Users\Jor18Madrid\Source\Repos\IdentityServer2\ApiTest\obj\Debug\netcoreapp3.1\ApiTest.csprojAssemblyReference.cache
 C:\Users\Jor18Madrid\Source\Repos\IdentityServer2\ApiTest\obj\Debug\netcoreapp3.1\ApiTest.AssemblyInfoInputs.cache
 C:\Users\Jor18Madrid\Source\Repos\IdentityServer2\ApiTest\obj\Debug\netcoreapp3.1\ApiTest.AssemblyInfo.cs
 C:\Users\Jor18Madrid\Source\Repos\IdentityServer2\ApiTest\obj\Debug\netcoreapp3.1\ApiTest.csproj.CoreCompileInputs.cache
@@ -26,4 +27,3 @@ C:\Users\Jor18Madrid\Source\Repos\IdentityServer2\ApiTest\obj\Debug\netcoreapp3.
 C:\Users\Jor18Madrid\Source\Repos\IdentityServer2\ApiTest\obj\Debug\netcoreapp3.1\ApiTest.dll
 C:\Users\Jor18Madrid\Source\Repos\IdentityServer2\ApiTest\obj\Debug\netcoreapp3.1\ApiTest.pdb
 C:\Users\Jor18Madrid\Source\Repos\IdentityServer2\ApiTest\obj\Debug\netcoreapp3.1\ApiTest.genruntimeconfig.cache
-C:\Users\Jor18Madrid\Source\Repos\IdentityServer2\ApiTest\obj\Debug\netcoreapp3.1\ApiTest.csprojAssemblyReference.cache
