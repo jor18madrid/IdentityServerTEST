@@ -57,14 +57,14 @@ namespace IdentityServer4.EntityFramework.Options
         /// <value>
         /// The API resource.
         /// </value>
-        public TableConfiguration ApiResource { get; set; } = new TableConfiguration("TBLAPITEST");
+        public TableConfiguration ApiResource { get; set; } = new TableConfiguration("TBLAPIS");
         /// <summary>
         /// Gets or sets the API secret table configuration.
         /// </summary>
         /// <value>
         /// The API secret.
         /// </value>
-        public TableConfiguration ApiSecret { get; set; } = new TableConfiguration("ApiSecrets");
+        public TableConfiguration ApiSecret { get; set; } = new TableConfiguration("APISECRETOS");
         /// <summary>
         /// Gets or sets the API scope table configuration.
         /// </summary>
