@@ -128,7 +128,7 @@ namespace IdentityServer4.EntityFramework.Options
         /// <value>
         /// The client secret.
         /// </value>
-        public TableConfiguration ClientSecret { get; set; } = new TableConfiguration("ClientSecrets");
+        public TableConfiguration ClientSecret { get; set; } = new TableConfiguration("TBLCLIENTESECRETOS");
         /// <summary>
         /// Gets or sets the client claim table configuration.
         /// </summary>
@@ -149,7 +149,7 @@ namespace IdentityServer4.EntityFramework.Options
         /// <value>
         /// The client cors origin.
         /// </value>
-        public TableConfiguration ClientCorsOrigin { get; set; } = new TableConfiguration("ClientCorsOrigins");
+        public TableConfiguration ClientCorsOrigin { get; set; } = new TableConfiguration("TBLCLIENTEORIGENCRUZADO");
         /// <summary>
         /// Gets or sets the client property table configuration.
         /// </summary>
