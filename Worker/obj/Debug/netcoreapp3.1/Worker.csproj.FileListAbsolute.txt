@@ -47,3 +47,4 @@ C:\Users\Jor18Madrid\Source\Repos\IdentityServer2\Worker\obj\Debug\netcoreapp3.1
 C:\Users\Jor18Madrid\Source\Repos\IdentityServer2\Worker\obj\Debug\netcoreapp3.1\Worker.dll
 C:\Users\Jor18Madrid\Source\Repos\IdentityServer2\Worker\obj\Debug\netcoreapp3.1\Worker.pdb
 C:\Users\Jor18Madrid\Source\Repos\IdentityServer2\Worker\obj\Debug\netcoreapp3.1\Worker.genruntimeconfig.cache
+C:\Users\Jor18Madrid\Source\Repos\IdentityServer2\Worker\obj\Debug\netcoreapp3.1\Worker.csprojAssemblyReference.cache

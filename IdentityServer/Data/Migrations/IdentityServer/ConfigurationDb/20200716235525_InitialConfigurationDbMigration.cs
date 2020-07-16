@@ -2,14 +2,14 @@
 using Microsoft.EntityFrameworkCore.Migrations;
 using Oracle.EntityFrameworkCore.Metadata;
 
-namespace IdentityServer.Data.Migrations.IdentityServer.ConfigurationDbTEST
+namespace IdentityServer.Data.Migrations.IdentityServer.ConfigurationDb
 {
-    public partial class InitialConfigurationDbMigrationTEST : Migration
+    public partial class InitialConfigurationDbMigration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "TBLAPITEST",
+                name: "TBLAPIS",
                 columns: table => new
                 {
                     APIID = table.Column<int>(nullable: false)
@@ -25,7 +25,7 @@ namespace IdentityServer.Data.Migrations.IdentityServer.ConfigurationDbTEST
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_TBLAPITEST", x => x.APIID);
+                    table.PrimaryKey("PK_TBLAPIS", x => x.APIID);
                 });
 
             migrationBuilder.CreateTable(
@@ -82,7 +82,31 @@ namespace IdentityServer.Data.Migrations.IdentityServer.ConfigurationDbTEST
                 });
 
             migrationBuilder.CreateTable(
-                name: "ApiScopes",
+                name: "APISECRETOS",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("Oracle:ValueGenerationStrategy", OracleValueGenerationStrategy.IdentityColumn),
+                    Description = table.Column<string>(maxLength: 1000, nullable: true),
+                    Value = table.Column<string>(maxLength: 4000, nullable: false),
+                    Expiration = table.Column<DateTime>(nullable: true),
+                    Type = table.Column<string>(maxLength: 250, nullable: false),
+                    Created = table.Column<DateTime>(nullable: false),
+                    ApiResourceId = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_APISECRETOS", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_APISECRETOS_TBLAPIS_ApiResourceId",
+                        column: x => x.ApiResourceId,
+                        principalTable: "TBLAPIS",
+                        principalColumn: "APIID",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "TBLAPIALCANCES",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
@@ -97,56 +121,12 @@ namespace IdentityServer.Data.Migrations.IdentityServer.ConfigurationDbTEST
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ApiScopes", x => x.Id);
+                    table.PrimaryKey("PK_TBLAPIALCANCES", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_ApiScopes_TBLAPITEST_ApiResourceId",
+                        name: "FK_TBLAPIALCANCES_TBLAPIS_ApiResourceId",
                         column: x => x.ApiResourceId,
-                        principalTable: "TBLAPITEST",
+                        principalTable: "TBLAPIS",
                         principalColumn: "APIID",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "ApiSecrets",
-                columns: table => new
-                {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("Oracle:ValueGenerationStrategy", OracleValueGenerationStrategy.IdentityColumn),
-                    Description = table.Column<string>(maxLength: 1000, nullable: true),
-                    Value = table.Column<string>(maxLength: 4000, nullable: false),
-                    Expiration = table.Column<DateTime>(nullable: true),
-                    Type = table.Column<string>(maxLength: 250, nullable: false),
-                    Created = table.Column<DateTime>(nullable: false),
-                    ApiResourceId = table.Column<int>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_ApiSecrets", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_ApiSecrets_TBLAPITEST_ApiResourceId",
-                        column: x => x.ApiResourceId,
-                        principalTable: "TBLAPITEST",
-                        principalColumn: "APIID",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "ClientCorsOrigins",
-                columns: table => new
-                {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("Oracle:ValueGenerationStrategy", OracleValueGenerationStrategy.IdentityColumn),
-                    Origin = table.Column<string>(maxLength: 150, nullable: false),
-                    ClientId = table.Column<int>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_ClientCorsOrigins", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_ClientCorsOrigins_TBLCLIENTES_ClientId",
-                        column: x => x.ClientId,
-                        principalTable: "TBLCLIENTES",
-                        principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -211,7 +191,7 @@ namespace IdentityServer.Data.Migrations.IdentityServer.ConfigurationDbTEST
                 });
 
             migrationBuilder.CreateTable(
-                name: "ClientScopes",
+                name: "TBLCLIENTEALCANCES",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
@@ -221,9 +201,9 @@ namespace IdentityServer.Data.Migrations.IdentityServer.ConfigurationDbTEST
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ClientScopes", x => x.Id);
+                    table.PrimaryKey("PK_TBLCLIENTEALCANCES", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_ClientScopes_TBLCLIENTES_ClientId",
+                        name: "FK_TBLCLIENTEALCANCES_TBLCLIENTES_ClientId",
                         column: x => x.ClientId,
                         principalTable: "TBLCLIENTES",
                         principalColumn: "Id",
@@ -231,7 +211,27 @@ namespace IdentityServer.Data.Migrations.IdentityServer.ConfigurationDbTEST
                 });
 
             migrationBuilder.CreateTable(
-                name: "ClientSecrets",
+                name: "TBLCLIENTEORIGENCRUZADO",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("Oracle:ValueGenerationStrategy", OracleValueGenerationStrategy.IdentityColumn),
+                    Origin = table.Column<string>(maxLength: 150, nullable: false),
+                    ClientId = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_TBLCLIENTEORIGENCRUZADO", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_TBLCLIENTEORIGENCRUZADO_TBLCLIENTES_ClientId",
+                        column: x => x.ClientId,
+                        principalTable: "TBLCLIENTES",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "TBLCLIENTESECRETOS",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
@@ -245,9 +245,9 @@ namespace IdentityServer.Data.Migrations.IdentityServer.ConfigurationDbTEST
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ClientSecrets", x => x.Id);
+                    table.PrimaryKey("PK_TBLCLIENTESECRETOS", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_ClientSecrets_TBLCLIENTES_ClientId",
+                        name: "FK_TBLCLIENTESECRETOS_TBLCLIENTES_ClientId",
                         column: x => x.ClientId,
                         principalTable: "TBLCLIENTES",
                         principalColumn: "Id",
@@ -255,25 +255,9 @@ namespace IdentityServer.Data.Migrations.IdentityServer.ConfigurationDbTEST
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_ApiScopes_ApiResourceId",
-                table: "ApiScopes",
+                name: "IX_APISECRETOS_ApiResourceId",
+                table: "APISECRETOS",
                 column: "ApiResourceId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_ApiScopes_Name",
-                table: "ApiScopes",
-                column: "Name",
-                unique: true);
-
-            migrationBuilder.CreateIndex(
-                name: "IX_ApiSecrets_ApiResourceId",
-                table: "ApiSecrets",
-                column: "ApiResourceId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_ClientCorsOrigins_ClientId",
-                table: "ClientCorsOrigins",
-                column: "ClientId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_ClientGrantTypes_ClientId",
@@ -291,38 +275,48 @@ namespace IdentityServer.Data.Migrations.IdentityServer.ConfigurationDbTEST
                 column: "ClientId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_ClientScopes_ClientId",
-                table: "ClientScopes",
-                column: "ClientId");
+                name: "IX_TBLAPIALCANCES_ApiResourceId",
+                table: "TBLAPIALCANCES",
+                column: "ApiResourceId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_ClientSecrets_ClientId",
-                table: "ClientSecrets",
-                column: "ClientId");
+                name: "IX_TBLAPIALCANCES_Name",
+                table: "TBLAPIALCANCES",
+                column: "Name",
+                unique: true);
 
             migrationBuilder.CreateIndex(
-                name: "IX_TBLAPITEST_NOMBRE",
-                table: "TBLAPITEST",
+                name: "IX_TBLAPIS_NOMBRE",
+                table: "TBLAPIS",
                 column: "NOMBRE",
                 unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_TBLCLIENTEALCANCES_ClientId",
+                table: "TBLCLIENTEALCANCES",
+                column: "ClientId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_TBLCLIENTEORIGENCRUZADO_ClientId",
+                table: "TBLCLIENTEORIGENCRUZADO",
+                column: "ClientId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_TBLCLIENTES_ClientId",
                 table: "TBLCLIENTES",
                 column: "ClientId",
                 unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_TBLCLIENTESECRETOS_ClientId",
+                table: "TBLCLIENTESECRETOS",
+                column: "ClientId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "ApiScopes");
-
-            migrationBuilder.DropTable(
-                name: "ApiSecrets");
-
-            migrationBuilder.DropTable(
-                name: "ClientCorsOrigins");
+                name: "APISECRETOS");
 
             migrationBuilder.DropTable(
                 name: "ClientGrantTypes");
@@ -334,13 +328,19 @@ namespace IdentityServer.Data.Migrations.IdentityServer.ConfigurationDbTEST
                 name: "ClientRedirectUris");
 
             migrationBuilder.DropTable(
-                name: "ClientScopes");
+                name: "TBLAPIALCANCES");
 
             migrationBuilder.DropTable(
-                name: "ClientSecrets");
+                name: "TBLCLIENTEALCANCES");
 
             migrationBuilder.DropTable(
-                name: "TBLAPITEST");
+                name: "TBLCLIENTEORIGENCRUZADO");
+
+            migrationBuilder.DropTable(
+                name: "TBLCLIENTESECRETOS");
+
+            migrationBuilder.DropTable(
+                name: "TBLAPIS");
 
             migrationBuilder.DropTable(
                 name: "TBLCLIENTES");

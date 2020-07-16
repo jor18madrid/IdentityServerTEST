@@ -7,11 +7,11 @@ using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Oracle.EntityFrameworkCore.Metadata;
 
-namespace IdentityServer.Data.Migrations.IdentityServer.ConfigurationDbTEST
+namespace IdentityServer.Data.Migrations.IdentityServer.ConfigurationDb
 {
     [DbContext(typeof(ConfigurationDbContext))]
-    [Migration("20200715134441_InitialConfigurationDbMigrationTEST")]
-    partial class InitialConfigurationDbMigrationTEST
+    [Migration("20200716235525_InitialConfigurationDbMigration")]
+    partial class InitialConfigurationDbMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -51,7 +51,7 @@ namespace IdentityServer.Data.Migrations.IdentityServer.ConfigurationDbTEST
                     b.HasIndex("Name")
                         .IsUnique();
 
-                    b.ToTable("ApiScopes");
+                    b.ToTable("TBLAPIALCANCES");
                 });
 
             modelBuilder.Entity("IdentityServer4.EntityFramework.Entities.ApiSecret", b =>
@@ -80,7 +80,7 @@ namespace IdentityServer.Data.Migrations.IdentityServer.ConfigurationDbTEST
 
                     b.HasIndex("ApiResourceId");
 
-                    b.ToTable("ApiSecrets");
+                    b.ToTable("APISECRETOS");
                 });
 
             modelBuilder.Entity("IdentityServer4.EntityFramework.Entities.ClientCorsOrigin", b =>
@@ -98,7 +98,7 @@ namespace IdentityServer.Data.Migrations.IdentityServer.ConfigurationDbTEST
 
                     b.HasIndex("ClientId");
 
-                    b.ToTable("ClientCorsOrigins");
+                    b.ToTable("TBLCLIENTEORIGENCRUZADO");
                 });
 
             modelBuilder.Entity("IdentityServer4.EntityFramework.Entities.ClientGrantType", b =>
@@ -170,7 +170,7 @@ namespace IdentityServer.Data.Migrations.IdentityServer.ConfigurationDbTEST
 
                     b.HasIndex("ClientId");
 
-                    b.ToTable("ClientScopes");
+                    b.ToTable("TBLCLIENTEALCANCES");
                 });
 
             modelBuilder.Entity("IdentityServer4.EntityFramework.Entities.ClientSecret", b =>
@@ -199,7 +199,7 @@ namespace IdentityServer.Data.Migrations.IdentityServer.ConfigurationDbTEST
 
                     b.HasIndex("ClientId");
 
-                    b.ToTable("ClientSecrets");
+                    b.ToTable("TBLCLIENTESECRETOS");
                 });
 
             modelBuilder.Entity("IdentityServer4.EntityFramework.Entities.Clientes", b =>
@@ -340,7 +340,7 @@ namespace IdentityServer.Data.Migrations.IdentityServer.ConfigurationDbTEST
                     b.HasIndex("NOMBRE")
                         .IsUnique();
 
-                    b.ToTable("TBLAPITEST");
+                    b.ToTable("TBLAPIS");
                 });
 
             modelBuilder.Entity("IdentityServer4.EntityFramework.Entities.ApiScope", b =>

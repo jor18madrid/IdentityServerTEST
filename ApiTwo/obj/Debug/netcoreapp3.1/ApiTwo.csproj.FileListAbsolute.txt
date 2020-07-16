@@ -27,3 +27,4 @@ C:\Users\Jor18Madrid\Source\Repos\IdentityServer2\ApiTwo\obj\Debug\netcoreapp3.1
 C:\Users\Jor18Madrid\Source\Repos\IdentityServer2\ApiTwo\obj\Debug\netcoreapp3.1\ApiTwo.dll
 C:\Users\Jor18Madrid\Source\Repos\IdentityServer2\ApiTwo\obj\Debug\netcoreapp3.1\ApiTwo.pdb
 C:\Users\Jor18Madrid\Source\Repos\IdentityServer2\ApiTwo\obj\Debug\netcoreapp3.1\ApiTwo.genruntimeconfig.cache
+C:\Users\Jor18Madrid\Source\Repos\IdentityServer2\ApiTwo\obj\Debug\netcoreapp3.1\ApiTwo.csprojAssemblyReference.cache

@@ -57,21 +57,21 @@ namespace IdentityServer4.EntityFramework.Options
         /// <value>
         /// The API resource.
         /// </value>
-        public TableConfiguration ApiResource { get; set; } = new TableConfiguration("TBLAPITEST");
+        public TableConfiguration ApiResource { get; set; } = new TableConfiguration("TBLAPIS");
         /// <summary>
         /// Gets or sets the API secret table configuration.
         /// </summary>
         /// <value>
         /// The API secret.
         /// </value>
-        public TableConfiguration ApiSecret { get; set; } = new TableConfiguration("ApiSecrets");
+        public TableConfiguration ApiSecret { get; set; } = new TableConfiguration("APISECRETOS");
         /// <summary>
         /// Gets or sets the API scope table configuration.
         /// </summary>
         /// <value>
         /// The API scope.
         /// </value>
-        public TableConfiguration ApiScope { get; set; } = new TableConfiguration("ApiScopes");
+        public TableConfiguration ApiScope { get; set; } = new TableConfiguration("TBLAPIALCANCES");
         /// <summary>
         /// Gets or sets the API claim table configuration.
         /// </summary>
@@ -121,14 +121,14 @@ namespace IdentityServer4.EntityFramework.Options
         /// <value>
         /// The client scopes.
         /// </value>
-        public TableConfiguration ClientScopes { get; set; } = new TableConfiguration("ClientScopes");
+        public TableConfiguration ClientScopes { get; set; } = new TableConfiguration("TBLCLIENTEALCANCES");
         /// <summary>
         /// Gets or sets the client secret table configuration.
         /// </summary>
         /// <value>
         /// The client secret.
         /// </value>
-        public TableConfiguration ClientSecret { get; set; } = new TableConfiguration("ClientSecrets");
+        public TableConfiguration ClientSecret { get; set; } = new TableConfiguration("TBLCLIENTESECRETOS");
         /// <summary>
         /// Gets or sets the client claim table configuration.
         /// </summary>
@@ -149,7 +149,7 @@ namespace IdentityServer4.EntityFramework.Options
         /// <value>
         /// The client cors origin.
         /// </value>
-        public TableConfiguration ClientCorsOrigin { get; set; } = new TableConfiguration("ClientCorsOrigins");
+        public TableConfiguration ClientCorsOrigin { get; set; } = new TableConfiguration("TBLCLIENTEORIGENCRUZADO");
         /// <summary>
         /// Gets or sets the client property table configuration.
         /// </summary>

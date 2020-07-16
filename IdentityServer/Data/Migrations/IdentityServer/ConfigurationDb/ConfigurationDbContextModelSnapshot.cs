@@ -19,46 +19,6 @@ namespace IdentityServer.Data.Migrations.IdentityServer.ConfigurationDb
                 .HasAnnotation("ProductVersion", "2.2.6-servicing-10079")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
-            modelBuilder.Entity("IdentityServer4.EntityFramework.Entities.ApiResourceClaim", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<int>("ApiResourceId");
-
-                    b.Property<string>("Type")
-                        .IsRequired()
-                        .HasMaxLength(200);
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ApiResourceId");
-
-                    b.ToTable("ApiClaims");
-                });
-
-            modelBuilder.Entity("IdentityServer4.EntityFramework.Entities.ApiResourceProperty", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<int>("ApiResourceId");
-
-                    b.Property<string>("Key")
-                        .IsRequired()
-                        .HasMaxLength(250);
-
-                    b.Property<string>("Value")
-                        .IsRequired()
-                        .HasMaxLength(2000);
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ApiResourceId");
-
-                    b.ToTable("ApiProperties");
-                });
-
             modelBuilder.Entity("IdentityServer4.EntityFramework.Entities.ApiScope", b =>
                 {
                     b.Property<int>("Id")
@@ -89,25 +49,7 @@ namespace IdentityServer.Data.Migrations.IdentityServer.ConfigurationDb
                     b.HasIndex("Name")
                         .IsUnique();
 
-                    b.ToTable("ApiScopes");
-                });
-
-            modelBuilder.Entity("IdentityServer4.EntityFramework.Entities.ApiScopeClaim", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<int>("ApiScopeId");
-
-                    b.Property<string>("Type")
-                        .IsRequired()
-                        .HasMaxLength(200);
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ApiScopeId");
-
-                    b.ToTable("ApiScopeClaims");
+                    b.ToTable("TBLAPIALCANCES");
                 });
 
             modelBuilder.Entity("IdentityServer4.EntityFramework.Entities.ApiSecret", b =>
@@ -136,29 +78,7 @@ namespace IdentityServer.Data.Migrations.IdentityServer.ConfigurationDb
 
                     b.HasIndex("ApiResourceId");
 
-                    b.ToTable("ApiSecrets");
-                });
-
-            modelBuilder.Entity("IdentityServer4.EntityFramework.Entities.ClientClaim", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<int>("ClientId");
-
-                    b.Property<string>("Type")
-                        .IsRequired()
-                        .HasMaxLength(250);
-
-                    b.Property<string>("Value")
-                        .IsRequired()
-                        .HasMaxLength(250);
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ClientId");
-
-                    b.ToTable("ClientClaims");
+                    b.ToTable("APISECRETOS");
                 });
 
             modelBuilder.Entity("IdentityServer4.EntityFramework.Entities.ClientCorsOrigin", b =>
@@ -176,7 +96,7 @@ namespace IdentityServer.Data.Migrations.IdentityServer.ConfigurationDb
 
                     b.HasIndex("ClientId");
 
-                    b.ToTable("ClientCorsOrigins");
+                    b.ToTable("TBLCLIENTEORIGENCRUZADO");
                 });
 
             modelBuilder.Entity("IdentityServer4.EntityFramework.Entities.ClientGrantType", b =>
@@ -197,24 +117,6 @@ namespace IdentityServer.Data.Migrations.IdentityServer.ConfigurationDb
                     b.ToTable("ClientGrantTypes");
                 });
 
-            modelBuilder.Entity("IdentityServer4.EntityFramework.Entities.ClientIdPRestriction", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<int>("ClientId");
-
-                    b.Property<string>("Provider")
-                        .IsRequired()
-                        .HasMaxLength(200);
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ClientId");
-
-                    b.ToTable("ClientIdPRestrictions");
-                });
-
             modelBuilder.Entity("IdentityServer4.EntityFramework.Entities.ClientPostLogoutRedirectUri", b =>
                 {
                     b.Property<int>("Id")
@@ -231,28 +133,6 @@ namespace IdentityServer.Data.Migrations.IdentityServer.ConfigurationDb
                     b.HasIndex("ClientId");
 
                     b.ToTable("ClientPostLogoutRedirectUris");
-                });
-
-            modelBuilder.Entity("IdentityServer4.EntityFramework.Entities.ClientProperty", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<int>("ClientId");
-
-                    b.Property<string>("Key")
-                        .IsRequired()
-                        .HasMaxLength(250);
-
-                    b.Property<string>("Value")
-                        .IsRequired()
-                        .HasMaxLength(2000);
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ClientId");
-
-                    b.ToTable("ClientProperties");
                 });
 
             modelBuilder.Entity("IdentityServer4.EntityFramework.Entities.ClientRedirectUri", b =>
@@ -288,7 +168,7 @@ namespace IdentityServer.Data.Migrations.IdentityServer.ConfigurationDb
 
                     b.HasIndex("ClientId");
 
-                    b.ToTable("ClientScopes");
+                    b.ToTable("TBLCLIENTEALCANCES");
                 });
 
             modelBuilder.Entity("IdentityServer4.EntityFramework.Entities.ClientSecret", b =>
@@ -317,7 +197,7 @@ namespace IdentityServer.Data.Migrations.IdentityServer.ConfigurationDb
 
                     b.HasIndex("ClientId");
 
-                    b.ToTable("ClientSecrets");
+                    b.ToTable("TBLCLIENTESECRETOS");
                 });
 
             modelBuilder.Entity("IdentityServer4.EntityFramework.Entities.Clientes", b =>
@@ -428,83 +308,6 @@ namespace IdentityServer.Data.Migrations.IdentityServer.ConfigurationDb
                     b.ToTable("TBLCLIENTES");
                 });
 
-            modelBuilder.Entity("IdentityServer4.EntityFramework.Entities.IdentityClaim", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<int>("IdentityResourceId");
-
-                    b.Property<string>("Type")
-                        .IsRequired()
-                        .HasMaxLength(200);
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("IdentityResourceId");
-
-                    b.ToTable("IdentityClaims");
-                });
-
-            modelBuilder.Entity("IdentityServer4.EntityFramework.Entities.IdentityResource", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<DateTime>("Created");
-
-                    b.Property<string>("Description")
-                        .HasMaxLength(1000);
-
-                    b.Property<string>("DisplayName")
-                        .HasMaxLength(200);
-
-                    b.Property<bool>("Emphasize");
-
-                    b.Property<bool>("Enabled");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(200);
-
-                    b.Property<bool>("NonEditable");
-
-                    b.Property<bool>("Required");
-
-                    b.Property<bool>("ShowInDiscoveryDocument");
-
-                    b.Property<DateTime?>("Updated");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("Name")
-                        .IsUnique();
-
-                    b.ToTable("IdentityResources");
-                });
-
-            modelBuilder.Entity("IdentityServer4.EntityFramework.Entities.IdentityResourceProperty", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<int>("IdentityResourceId");
-
-                    b.Property<string>("Key")
-                        .IsRequired()
-                        .HasMaxLength(250);
-
-                    b.Property<string>("Value")
-                        .IsRequired()
-                        .HasMaxLength(2000);
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("IdentityResourceId");
-
-                    b.ToTable("IdentityProperties");
-                });
-
             modelBuilder.Entity("IdentityServer4.EntityFramework.Entities.TBLAPITEST", b =>
                 {
                     b.Property<int>("APIID")
@@ -535,23 +338,7 @@ namespace IdentityServer.Data.Migrations.IdentityServer.ConfigurationDb
                     b.HasIndex("NOMBRE")
                         .IsUnique();
 
-                    b.ToTable("TBLAPITEST");
-                });
-
-            modelBuilder.Entity("IdentityServer4.EntityFramework.Entities.ApiResourceClaim", b =>
-                {
-                    b.HasOne("IdentityServer4.EntityFramework.Entities.TBLAPITEST", "ApiResource")
-                        .WithMany("USERCLAIMS")
-                        .HasForeignKey("ApiResourceId")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("IdentityServer4.EntityFramework.Entities.ApiResourceProperty", b =>
-                {
-                    b.HasOne("IdentityServer4.EntityFramework.Entities.TBLAPITEST", "ApiResource")
-                        .WithMany("PROPIEDADES")
-                        .HasForeignKey("ApiResourceId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                    b.ToTable("TBLAPIS");
                 });
 
             modelBuilder.Entity("IdentityServer4.EntityFramework.Entities.ApiScope", b =>
@@ -562,27 +349,11 @@ namespace IdentityServer.Data.Migrations.IdentityServer.ConfigurationDb
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("IdentityServer4.EntityFramework.Entities.ApiScopeClaim", b =>
-                {
-                    b.HasOne("IdentityServer4.EntityFramework.Entities.ApiScope", "ApiScope")
-                        .WithMany("UserClaims")
-                        .HasForeignKey("ApiScopeId")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
-
             modelBuilder.Entity("IdentityServer4.EntityFramework.Entities.ApiSecret", b =>
                 {
                     b.HasOne("IdentityServer4.EntityFramework.Entities.TBLAPITEST", "ApiResource")
                         .WithMany("SECRETS")
                         .HasForeignKey("ApiResourceId")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("IdentityServer4.EntityFramework.Entities.ClientClaim", b =>
-                {
-                    b.HasOne("IdentityServer4.EntityFramework.Entities.Clientes", "Client")
-                        .WithMany("Claims")
-                        .HasForeignKey("ClientId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
@@ -602,26 +373,10 @@ namespace IdentityServer.Data.Migrations.IdentityServer.ConfigurationDb
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("IdentityServer4.EntityFramework.Entities.ClientIdPRestriction", b =>
-                {
-                    b.HasOne("IdentityServer4.EntityFramework.Entities.Clientes", "Client")
-                        .WithMany("IdentityProviderRestrictions")
-                        .HasForeignKey("ClientId")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
-
             modelBuilder.Entity("IdentityServer4.EntityFramework.Entities.ClientPostLogoutRedirectUri", b =>
                 {
                     b.HasOne("IdentityServer4.EntityFramework.Entities.Clientes", "Client")
                         .WithMany("PostLogoutRedirectUris")
-                        .HasForeignKey("ClientId")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("IdentityServer4.EntityFramework.Entities.ClientProperty", b =>
-                {
-                    b.HasOne("IdentityServer4.EntityFramework.Entities.Clientes", "Client")
-                        .WithMany("Properties")
                         .HasForeignKey("ClientId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
@@ -647,22 +402,6 @@ namespace IdentityServer.Data.Migrations.IdentityServer.ConfigurationDb
                     b.HasOne("IdentityServer4.EntityFramework.Entities.Clientes", "Client")
                         .WithMany("ClientSecrets")
                         .HasForeignKey("ClientId")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("IdentityServer4.EntityFramework.Entities.IdentityClaim", b =>
-                {
-                    b.HasOne("IdentityServer4.EntityFramework.Entities.IdentityResource", "IdentityResource")
-                        .WithMany("UserClaims")
-                        .HasForeignKey("IdentityResourceId")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("IdentityServer4.EntityFramework.Entities.IdentityResourceProperty", b =>
-                {
-                    b.HasOne("IdentityServer4.EntityFramework.Entities.IdentityResource", "IdentityResource")
-                        .WithMany("Properties")
-                        .HasForeignKey("IdentityResourceId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618
