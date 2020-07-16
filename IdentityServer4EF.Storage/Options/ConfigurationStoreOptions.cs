@@ -71,7 +71,7 @@ namespace IdentityServer4.EntityFramework.Options
         /// <value>
         /// The API scope.
         /// </value>
-        public TableConfiguration ApiScope { get; set; } = new TableConfiguration("ApiScopes");
+        public TableConfiguration ApiScope { get; set; } = new TableConfiguration("TBLAPIALCANCES");
         /// <summary>
         /// Gets or sets the API claim table configuration.
         /// </summary>
@@ -121,7 +121,7 @@ namespace IdentityServer4.EntityFramework.Options
         /// <value>
         /// The client scopes.
         /// </value>
-        public TableConfiguration ClientScopes { get; set; } = new TableConfiguration("ClientScopes");
+        public TableConfiguration ClientScopes { get; set; } = new TableConfiguration("TBLCLIENTEALCANCES");
         /// <summary>
         /// Gets or sets the client secret table configuration.
         /// </summary>
