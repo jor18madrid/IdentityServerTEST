@@ -64,7 +64,7 @@ namespace IdentityServer4.EntityFramework.Options
         /// <value>
         /// The API secret.
         /// </value>
-        public TableConfiguration ApiSecret { get; set; } = new TableConfiguration("APISECRETOS");
+        public TableConfiguration ApiSecret { get; set; } = new TableConfiguration("TBLAPISECRETOS");
         /// <summary>
         /// Gets or sets the API scope table configuration.
         /// </summary>
@@ -100,21 +100,21 @@ namespace IdentityServer4.EntityFramework.Options
         /// <value>
         /// The type of the client grant.
         /// </value>
-        public TableConfiguration ClientGrantType { get; set; } = new TableConfiguration("ClientGrantTypes");
+        public TableConfiguration ClientGrantType { get; set; } = new TableConfiguration("TBLTIPOSCONCESIONES");
         /// <summary>
         /// Gets or sets the client redirect URI table configuration.
         /// </summary>
         /// <value>
         /// The client redirect URI.
         /// </value>
-        public TableConfiguration ClientRedirectUri { get; set; } = new TableConfiguration("ClientRedirectUris");
+        public TableConfiguration ClientRedirectUri { get; set; } = new TableConfiguration("TBLCLIENTEREDIRIGIRURL");
         /// <summary>
         /// Gets or sets the client post logout redirect URI table configuration.
         /// </summary>
         /// <value>
         /// The client post logout redirect URI.
         /// </value>
-        public TableConfiguration ClientPostLogoutRedirectUri { get; set; } = new TableConfiguration("ClientPostLogoutRedirectUris");
+        public TableConfiguration ClientPostLogoutRedirectUri { get; set; } = new TableConfiguration("TBLCLIENTEREDIRIGIRCERRARSESIONURL");
         /// <summary>
         /// Gets or sets the client scopes table configuration.
         /// </summary>

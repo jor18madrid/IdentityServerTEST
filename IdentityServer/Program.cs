@@ -20,7 +20,7 @@ namespace IdentityServer
     {
         public static void Main(string[] args)
         {
-            var webhost = CreateHostBuilder(args).Build();
+            var webhost = CreateWebHostBuilder(args).Build();
             
             using (var scope = webhost.Services.CreateScope())
             {
@@ -71,16 +71,16 @@ namespace IdentityServer
             webhost.Run();
         }
 
-        public static IHostBuilder CreateHostBuilder(string[] args) =>
-            Host.CreateDefaultBuilder(args)
-                .ConfigureWebHostDefaults(webBuilder =>
-                {
-                    webBuilder.UseStartup<Startup>();
-                });
+        //public static IHostBuilder CreateHostBuilder(string[] args) =>
+        //    Host.CreateDefaultBuilder(args)
+        //        .ConfigureWebHostDefaults(webBuilder =>
+        //        {
+        //            webBuilder.UseStartup<Startup>();
+        //        });
 
-    //    public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
-    //WebHost.CreateDefaultBuilder(args)
-    //    .UseStartup<Startup>();
+        public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
+    WebHost.CreateDefaultBuilder(args)
+        .UseStartup<Startup>();
     }
 }
 

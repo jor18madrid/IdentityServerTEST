@@ -82,30 +82,6 @@ namespace IdentityServer.Data.Migrations.IdentityServer.ConfigurationDb
                 });
 
             migrationBuilder.CreateTable(
-                name: "APISECRETOS",
-                columns: table => new
-                {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("Oracle:ValueGenerationStrategy", OracleValueGenerationStrategy.IdentityColumn),
-                    Description = table.Column<string>(maxLength: 1000, nullable: true),
-                    Value = table.Column<string>(maxLength: 4000, nullable: false),
-                    Expiration = table.Column<DateTime>(nullable: true),
-                    Type = table.Column<string>(maxLength: 250, nullable: false),
-                    Created = table.Column<DateTime>(nullable: false),
-                    ApiResourceId = table.Column<int>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_APISECRETOS", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_APISECRETOS_TBLAPIS_ApiResourceId",
-                        column: x => x.ApiResourceId,
-                        principalTable: "TBLAPIS",
-                        principalColumn: "APIID",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "TBLAPIALCANCES",
                 columns: table => new
                 {
@@ -131,62 +107,26 @@ namespace IdentityServer.Data.Migrations.IdentityServer.ConfigurationDb
                 });
 
             migrationBuilder.CreateTable(
-                name: "ClientGrantTypes",
+                name: "TBLAPISECRETOS",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("Oracle:ValueGenerationStrategy", OracleValueGenerationStrategy.IdentityColumn),
-                    GrantType = table.Column<string>(maxLength: 250, nullable: false),
-                    ClientId = table.Column<int>(nullable: false)
+                    Description = table.Column<string>(maxLength: 1000, nullable: true),
+                    Value = table.Column<string>(maxLength: 4000, nullable: false),
+                    Expiration = table.Column<DateTime>(nullable: true),
+                    Type = table.Column<string>(maxLength: 250, nullable: false),
+                    Created = table.Column<DateTime>(nullable: false),
+                    ApiResourceId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ClientGrantTypes", x => x.Id);
+                    table.PrimaryKey("PK_TBLAPISECRETOS", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_ClientGrantTypes_TBLCLIENTES_ClientId",
-                        column: x => x.ClientId,
-                        principalTable: "TBLCLIENTES",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "ClientPostLogoutRedirectUris",
-                columns: table => new
-                {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("Oracle:ValueGenerationStrategy", OracleValueGenerationStrategy.IdentityColumn),
-                    PostLogoutRedirectUri = table.Column<string>(maxLength: 2000, nullable: false),
-                    ClientId = table.Column<int>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_ClientPostLogoutRedirectUris", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_ClientPostLogoutRedirectUris_TBLCLIENTES_ClientId",
-                        column: x => x.ClientId,
-                        principalTable: "TBLCLIENTES",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "ClientRedirectUris",
-                columns: table => new
-                {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("Oracle:ValueGenerationStrategy", OracleValueGenerationStrategy.IdentityColumn),
-                    RedirectUri = table.Column<string>(maxLength: 2000, nullable: false),
-                    ClientId = table.Column<int>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_ClientRedirectUris", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_ClientRedirectUris_TBLCLIENTES_ClientId",
-                        column: x => x.ClientId,
-                        principalTable: "TBLCLIENTES",
-                        principalColumn: "Id",
+                        name: "FK_TBLAPISECRETOS_TBLAPIS_ApiResourceId",
+                        column: x => x.ApiResourceId,
+                        principalTable: "TBLAPIS",
+                        principalColumn: "APIID",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -231,6 +171,46 @@ namespace IdentityServer.Data.Migrations.IdentityServer.ConfigurationDb
                 });
 
             migrationBuilder.CreateTable(
+                name: "TBLCLIENTEREDIRIGIRCERRARSESIONURL",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("Oracle:ValueGenerationStrategy", OracleValueGenerationStrategy.IdentityColumn),
+                    PostLogoutRedirectUri = table.Column<string>(maxLength: 2000, nullable: false),
+                    ClientId = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_TBLCLIENTEREDIRIGIRCERRARSESIONURL", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_TBLCLIENTEREDIRIGIRCERRARSESIONURL_TBLCLIENTES_ClientId",
+                        column: x => x.ClientId,
+                        principalTable: "TBLCLIENTES",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "TBLCLIENTEREDIRIGIRURL",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("Oracle:ValueGenerationStrategy", OracleValueGenerationStrategy.IdentityColumn),
+                    RedirectUri = table.Column<string>(maxLength: 2000, nullable: false),
+                    ClientId = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_TBLCLIENTEREDIRIGIRURL", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_TBLCLIENTEREDIRIGIRURL_TBLCLIENTES_ClientId",
+                        column: x => x.ClientId,
+                        principalTable: "TBLCLIENTES",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "TBLCLIENTESECRETOS",
                 columns: table => new
                 {
@@ -254,25 +234,25 @@ namespace IdentityServer.Data.Migrations.IdentityServer.ConfigurationDb
                         onDelete: ReferentialAction.Cascade);
                 });
 
-            migrationBuilder.CreateIndex(
-                name: "IX_APISECRETOS_ApiResourceId",
-                table: "APISECRETOS",
-                column: "ApiResourceId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_ClientGrantTypes_ClientId",
-                table: "ClientGrantTypes",
-                column: "ClientId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_ClientPostLogoutRedirectUris_ClientId",
-                table: "ClientPostLogoutRedirectUris",
-                column: "ClientId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_ClientRedirectUris_ClientId",
-                table: "ClientRedirectUris",
-                column: "ClientId");
+            migrationBuilder.CreateTable(
+                name: "TBLTIPOSCONCESIONES",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("Oracle:ValueGenerationStrategy", OracleValueGenerationStrategy.IdentityColumn),
+                    GrantType = table.Column<string>(maxLength: 250, nullable: false),
+                    ClientId = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_TBLTIPOSCONCESIONES", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_TBLTIPOSCONCESIONES_TBLCLIENTES_ClientId",
+                        column: x => x.ClientId,
+                        principalTable: "TBLCLIENTES",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
 
             migrationBuilder.CreateIndex(
                 name: "IX_TBLAPIALCANCES_ApiResourceId",
@@ -292,6 +272,11 @@ namespace IdentityServer.Data.Migrations.IdentityServer.ConfigurationDb
                 unique: true);
 
             migrationBuilder.CreateIndex(
+                name: "IX_TBLAPISECRETOS_ApiResourceId",
+                table: "TBLAPISECRETOS",
+                column: "ApiResourceId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_TBLCLIENTEALCANCES_ClientId",
                 table: "TBLCLIENTEALCANCES",
                 column: "ClientId");
@@ -299,6 +284,16 @@ namespace IdentityServer.Data.Migrations.IdentityServer.ConfigurationDb
             migrationBuilder.CreateIndex(
                 name: "IX_TBLCLIENTEORIGENCRUZADO_ClientId",
                 table: "TBLCLIENTEORIGENCRUZADO",
+                column: "ClientId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_TBLCLIENTEREDIRIGIRCERRARSESIONURL_ClientId",
+                table: "TBLCLIENTEREDIRIGIRCERRARSESIONURL",
+                column: "ClientId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_TBLCLIENTEREDIRIGIRURL_ClientId",
+                table: "TBLCLIENTEREDIRIGIRURL",
                 column: "ClientId");
 
             migrationBuilder.CreateIndex(
@@ -311,24 +306,20 @@ namespace IdentityServer.Data.Migrations.IdentityServer.ConfigurationDb
                 name: "IX_TBLCLIENTESECRETOS_ClientId",
                 table: "TBLCLIENTESECRETOS",
                 column: "ClientId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_TBLTIPOSCONCESIONES_ClientId",
+                table: "TBLTIPOSCONCESIONES",
+                column: "ClientId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "APISECRETOS");
-
-            migrationBuilder.DropTable(
-                name: "ClientGrantTypes");
-
-            migrationBuilder.DropTable(
-                name: "ClientPostLogoutRedirectUris");
-
-            migrationBuilder.DropTable(
-                name: "ClientRedirectUris");
-
-            migrationBuilder.DropTable(
                 name: "TBLAPIALCANCES");
+
+            migrationBuilder.DropTable(
+                name: "TBLAPISECRETOS");
 
             migrationBuilder.DropTable(
                 name: "TBLCLIENTEALCANCES");
@@ -337,7 +328,16 @@ namespace IdentityServer.Data.Migrations.IdentityServer.ConfigurationDb
                 name: "TBLCLIENTEORIGENCRUZADO");
 
             migrationBuilder.DropTable(
+                name: "TBLCLIENTEREDIRIGIRCERRARSESIONURL");
+
+            migrationBuilder.DropTable(
+                name: "TBLCLIENTEREDIRIGIRURL");
+
+            migrationBuilder.DropTable(
                 name: "TBLCLIENTESECRETOS");
+
+            migrationBuilder.DropTable(
+                name: "TBLTIPOSCONCESIONES");
 
             migrationBuilder.DropTable(
                 name: "TBLAPIS");
