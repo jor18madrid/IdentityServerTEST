@@ -45,12 +45,12 @@ namespace IdentityServer4.EntityFramework.Stores
         {
             var query =
                 from apiResource in _context.ApiResources
-                where apiResource.NOMBRE == name
+                where apiResource.Nombre == name
                 select apiResource;
 
             var apis = query
-                .Include(x => x.SECRETS)
-                .Include(x => x.SCOPES)
+                .Include(x => x.Secretos)
+                .Include(x => x.Alcances)
                 //.ThenInclude(s => s.UserClaims)
                 //.Include(x => x.USERCLAIMS)
                 //.Include(x => x.PROPIEDADES)
@@ -81,12 +81,12 @@ namespace IdentityServer4.EntityFramework.Stores
 
             var query =
                 from api in _context.ApiResources
-                where api.SCOPES.Where(x => names.Contains(x.Name)).Any()
+                where api.Alcances.Where(x => names.Contains(x.Nombre)).Any()
                 select api;
 
             var apis = query
-                .Include(x => x.SECRETS)
-                .Include(x => x.SCOPES)
+                .Include(x => x.Secretos)
+                .Include(x => x.Alcances)
                 //.ThenInclude(s => s.UserClaims)
                 //.Include(x => x.USERCLAIMS)
                 //.Include(x => x.PROPIEDADES)
@@ -142,8 +142,8 @@ namespace IdentityServer4.EntityFramework.Stores
             IEnumerable<Entities.IdentityResource> identity = Enumerable.Empty<Entities.IdentityResource>();
 
             var apis = _context.ApiResources
-                .Include(x => x.SECRETS)
-                .Include(x => x.SCOPES)
+                .Include(x => x.Secretos)
+                .Include(x => x.Alcances)
                 //.ThenInclude(s => s.UserClaims)
                 //.Include(x => x.USERCLAIMS)
                 //.Include(x => x.PROPIEDADES)

@@ -8,13 +8,13 @@ using System;
 
 namespace IdentityServer4.EntityFramework.Entities
 {
-    public class Secret
+    public class SecretoEntity
     {
-        public int Id { get; set; }
-        public string Description { get; set; }
-        public string Value { get; set; }
-        public DateTime? Expiration { get; set; }
-        public string Type { get; set; } = "SharedSecret";
+        public int SecretoId { get; set; }
+        public string Descripcion { get; set; }
+        public string Valor { get; set; }
+        public DateTime? FechaExpiracion { get; set; }
+        public string Tipo { get; set; } = "SharedSecret";
         public DateTime Created { get; set; } = DateTime.UtcNow;
     }
 }

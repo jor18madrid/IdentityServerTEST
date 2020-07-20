@@ -24,14 +24,14 @@ namespace IdentityServer4.EntityFramework.Mappers
             CreateMap<Entities.ClientProperty, KeyValuePair<string, string>>()
                 .ReverseMap();
 
-            CreateMap<Entities.Clientes, Models.Client>()
+            CreateMap<Entities.ClienteEntity, Models.Client>()
                 .ForMember(dest => dest.ProtocolType, opt => opt.Condition(srs => srs != null))
                 .ReverseMap();
 
-            CreateMap<Entities.ClientCorsOrigin, string>()
-                .ConstructUsing(src => src.Origin)
+            CreateMap<Entities.ClienteOrigenCruzadoEntity, string>()
+                .ConstructUsing(src => src.Origen)
                 .ReverseMap()
-                .ForMember(dest => dest.Origin, opt => opt.MapFrom(src => src));
+                .ForMember(dest => dest.Origen, opt => opt.MapFrom(src => src));
 
             CreateMap<Entities.ClientIdPRestriction, string>()
                 .ConstructUsing(src => src.Provider)
@@ -42,27 +42,27 @@ namespace IdentityServer4.EntityFramework.Mappers
                 .ConstructUsing(src => new Claim(src.Type, src.Value))
                 .ReverseMap();
 
-            CreateMap<Entities.ClientScope, string>()
-                .ConstructUsing(src => src.Scope)
+            CreateMap<Entities.ClienteAlcanceEntity, string>()
+                .ConstructUsing(src => src.Alcance)
                 .ReverseMap()
-                .ForMember(dest => dest.Scope, opt => opt.MapFrom(src => src));
+                .ForMember(dest => dest.Alcance, opt => opt.MapFrom(src => src));
 
-            CreateMap<Entities.ClientPostLogoutRedirectUri, string>()
-                .ConstructUsing(src => src.PostLogoutRedirectUri)
+            CreateMap<Entities.ClienteUrlRedirigirCerrarSesionEntity, string>()
+                .ConstructUsing(src => src.Url)
                 .ReverseMap()
-                .ForMember(dest => dest.PostLogoutRedirectUri, opt => opt.MapFrom(src => src));
+                .ForMember(dest => dest.Url, opt => opt.MapFrom(src => src));
 
-            CreateMap<Entities.ClientRedirectUri, string>()
-                .ConstructUsing(src => src.RedirectUri)
+            CreateMap<Entities.ClienteUrlRedirigirEntity, string>()
+                .ConstructUsing(src => src.Url)
                 .ReverseMap()
-                .ForMember(dest => dest.RedirectUri, opt => opt.MapFrom(src => src));
+                .ForMember(dest => dest.Url, opt => opt.MapFrom(src => src));
 
-            CreateMap<Entities.ClientGrantType, string>()
-                .ConstructUsing(src => src.GrantType)
+            CreateMap<Entities.ClienteTipoConcesionEntity, string>()
+                .ConstructUsing(src => src.TipoConcesion)
                 .ReverseMap()
-                .ForMember(dest => dest.GrantType, opt => opt.MapFrom(src => src));
+                .ForMember(dest => dest.TipoConcesion, opt => opt.MapFrom(src => src));
 
-            CreateMap<Entities.ClientSecret, Models.Secret>(MemberList.Destination)
+            CreateMap<Entities.ClienteSecretoEntity, Models.Secret>(MemberList.Destination)
                 .ForMember(dest => dest.Type, opt => opt.Condition(srs => srs != null))
                 .ReverseMap();
         }

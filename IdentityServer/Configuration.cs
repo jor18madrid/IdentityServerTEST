@@ -21,53 +21,53 @@ namespace IdentityServer
                 new IdentityServer4.Models.IdentityResources.Profile()
            };
 
-        public static IEnumerable<TBLAPITEST> GetApis() =>
-             new List<TBLAPITEST> {
-                new TBLAPITEST(){
-                    NOMBRE = apiName,
-                    NOMBREMOSTRAR = apiName,
-                    SCOPES = ApiScopes()
+        public static IEnumerable<ApiEntity> GetApis() =>
+             new List<ApiEntity> {
+                new ApiEntity(){
+                    Nombre = apiName,
+                    NombreMostrar = apiName,
+                    Alcances = ApiScopes()
                 }
              };
 
-        public static IEnumerable<Clientes> GetClients() =>
-            new List<Clientes> {
-                new Clientes {
-                    ClientId = "client_id",
-                    ClientSecrets = ClientSecret("client_secret"),
-                    AllowedGrantTypes = AllowedGrantTypes(),
+        public static IEnumerable<ClienteEntity> GetClients() =>
+            new List<ClienteEntity> {
+                new ClienteEntity {
+                    ClienteIdDescripcion = "client_id",
+                    ClienteSecretos = ClientSecret("client_secret"),
+                    TiposConcesionesHabilitadas = AllowedGrantTypes(),
                     AllowedScopes = Scopes()
                 },
-                new Clientes{
-                    ClientId = "client_worker_id",
-                    ClientSecrets = ClientSecret("client_worker_secret"),
-                    AllowedGrantTypes = AllowedGrantTypes(),
+                new ClienteEntity{
+                    ClienteIdDescripcion = "client_worker_id",
+                    ClienteSecretos = ClientSecret("client_worker_secret"),
+                    TiposConcesionesHabilitadas = AllowedGrantTypes(),
                     AllowedScopes = Scopes()
                 },
-                new Clientes
+                new ClienteEntity
                 {
-                    ClientId = "angular_id",
-                    RequirePkce = true,
-                    RequireClientSecret = false,
-                    AllowedGrantTypes = AllowedGrantTypesAngular(),
-                    RedirectUris = RedirectUri(),
-                    PostLogoutRedirectUris = ClientPostLogoutRedirectUris(),
+                    ClienteIdDescripcion = "angular_id",
+                    RequierePkce = true,
+                    RequiereSecreto = false,
+                    TiposConcesionesHabilitadas = AllowedGrantTypesAngular(),
+                    ClienteRedirigirUris = RedirectUri(),
+                    ClienteRedirigirCerrarSesionUris = ClientPostLogoutRedirectUris(),
                     AllowedCorsOrigins = ClientCorsOrigins(),
                     AllowedScopes = ScopesAngular(),
-                    AllowAccessTokensViaBrowser = true,
-                    RequireConsent = false
+                    HabilitarTokenDesdeNavegador = true,
+                    RequiereConsentimiento = false
                 }
             };
 
 
-        public static List<ApiScope> ApiScopes()
+        public static List<ApiAlcanceEntity> ApiScopes()
         {
-            List<ApiScope> lista = new List<ApiScope>
+            List<ApiAlcanceEntity> lista = new List<ApiAlcanceEntity>
             {
-                new ApiScope()
+                new ApiAlcanceEntity()
                 {
-                    Name = apiName,
-                    DisplayName = apiName
+                    Nombre = apiName,
+                    NombreMostrar = apiName
                 }
             };
 
@@ -75,11 +75,11 @@ namespace IdentityServer
         }
 
 
-        public static List<ClientSecret> ClientSecret(string secret)
+        public static List<ClienteSecretoEntity> ClientSecret(string secret)
         {
-            List<ClientSecret> lista = new List<ClientSecret>
+            List<ClienteSecretoEntity> lista = new List<ClienteSecretoEntity>
             {
-                new ClientSecret() { Value = secret.ToSha256() }
+                new ClienteSecretoEntity() { Valor = secret.ToSha256() }
             };
 
             return lista;
@@ -87,76 +87,76 @@ namespace IdentityServer
 
 
 
-        public static List<ClientGrantType> AllowedGrantTypes()
+        public static List<ClienteTipoConcesionEntity> AllowedGrantTypes()
         {
-            List<ClientGrantType> lista = new List<ClientGrantType>();
+            List<ClienteTipoConcesionEntity> lista = new List<ClienteTipoConcesionEntity>();
 
             foreach (var item in IdentityServer4.Models.GrantTypes.ClientCredentials)
             {
-                lista.Add(new ClientGrantType() { GrantType = item.ToString() });
+                lista.Add(new ClienteTipoConcesionEntity() { TipoConcesion = item.ToString() });
             }
 
             return lista;
         }
 
-        public static List<ClientGrantType> AllowedGrantTypesAngular()
+        public static List<ClienteTipoConcesionEntity> AllowedGrantTypesAngular()
         {
-            List<ClientGrantType> lista = new List<ClientGrantType>();
+            List<ClienteTipoConcesionEntity> lista = new List<ClienteTipoConcesionEntity>();
 
             foreach (var item in IdentityServer4.Models.GrantTypes.Code)
             {
-                lista.Add(new ClientGrantType() { GrantType = item.ToString() });
+                lista.Add(new ClienteTipoConcesionEntity() { TipoConcesion = item.ToString() });
             }
 
             return lista;
         }
 
 
-        public static List<ClientScope> Scopes()
+        public static List<ClienteAlcanceEntity> Scopes()
         {
-            List<ClientScope> lista = new List<ClientScope>
+            List<ClienteAlcanceEntity> lista = new List<ClienteAlcanceEntity>
             {
-                new ClientScope() { Scope = apiName }
+                new ClienteAlcanceEntity() { Alcance = apiName }
             };
 
             return lista;
         }
-        public static List<ClientScope> ScopesAngular()
+        public static List<ClienteAlcanceEntity> ScopesAngular()
         {
-            List<ClientScope> lista = new List<ClientScope>
+            List<ClienteAlcanceEntity> lista = new List<ClienteAlcanceEntity>
             {
-                new ClientScope() { Scope = apiName },
-                new ClientScope() { Scope = IdentityServerConstants.StandardScopes.OpenId }
-            };
-
-            return lista;
-        }
-
-        public static List<ClientRedirectUri> RedirectUri()
-        {
-            List<ClientRedirectUri> lista = new List<ClientRedirectUri>
-            {
-                new ClientRedirectUri() { RedirectUri = "http://localhost:4200" }
+                new ClienteAlcanceEntity() { Alcance = apiName },
+                new ClienteAlcanceEntity() { Alcance = IdentityServerConstants.StandardScopes.OpenId }
             };
 
             return lista;
         }
 
-        public static List<ClientPostLogoutRedirectUri> ClientPostLogoutRedirectUris()
+        public static List<ClienteUrlRedirigirEntity> RedirectUri()
         {
-            List<ClientPostLogoutRedirectUri> lista = new List<ClientPostLogoutRedirectUri>
+            List<ClienteUrlRedirigirEntity> lista = new List<ClienteUrlRedirigirEntity>
             {
-                new ClientPostLogoutRedirectUri() { PostLogoutRedirectUri = "http://localhost:4200" }
+                new ClienteUrlRedirigirEntity() { Url = "http://localhost:4200" }
             };
 
             return lista;
         }
 
-        public static List<ClientCorsOrigin> ClientCorsOrigins()
+        public static List<ClienteUrlRedirigirCerrarSesionEntity> ClientPostLogoutRedirectUris()
         {
-            List<ClientCorsOrigin> lista = new List<ClientCorsOrigin>
+            List<ClienteUrlRedirigirCerrarSesionEntity> lista = new List<ClienteUrlRedirigirCerrarSesionEntity>
             {
-                new ClientCorsOrigin() { Origin = "http://localhost:4200" }
+                new ClienteUrlRedirigirCerrarSesionEntity() { Url = "http://localhost:4200" }
+            };
+
+            return lista;
+        }
+
+        public static List<ClienteOrigenCruzadoEntity> ClientCorsOrigins()
+        {
+            List<ClienteOrigenCruzadoEntity> lista = new List<ClienteOrigenCruzadoEntity>
+            {
+                new ClienteOrigenCruzadoEntity() { Origen = "http://localhost:4200" }
             };
 
             return lista;

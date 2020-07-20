@@ -27,19 +27,19 @@ namespace IdentityServer4.EntityFramework.Mappers
         /// </summary>
         /// <param name="entity">The entity.</param>
         /// <returns></returns>
-        public static Models.ApiResource ToModel(this TBLAPITEST entity)
+        public static Models.ApiResource ToModel(this ApiEntity entity)
         {
 
             var model = new Models.ApiResource()
             {
-                Name = entity.NOMBRE,
-                Scopes = entity.SCOPES.MapApiResource()
+                Name = entity.Nombre,
+                Scopes = entity.Alcances.MapApiResource()
             };
             //return entity == null ? null : Mapper.Map<Models.ApiResource>(entity);
             return model;
         }
 
-        public static ICollection<Models.Scope> MapApiResource(this List<ApiScope> lista)
+        public static ICollection<Models.Scope> MapApiResource(this List<ApiAlcanceEntity> lista)
         {
             List<Models.Scope> model = new List<Models.Scope>();
 
@@ -48,8 +48,8 @@ namespace IdentityServer4.EntityFramework.Mappers
                 model.Add(
                     new Models.Scope
                     {
-                        Name = item.Name,
-                        DisplayName = item.DisplayName
+                        Name = item.Nombre,
+                        DisplayName = item.NombreMostrar
                     });
             }
             return model;
@@ -62,9 +62,9 @@ namespace IdentityServer4.EntityFramework.Mappers
         /// </summary>
         /// <param name="model">The model.</param>
         /// <returns></returns>
-        public static TBLAPITEST ToEntity(this Models.ApiResource model)
+        public static ApiEntity ToEntity(this Models.ApiResource model)
         {
-            return model == null ? null : Mapper.Map<TBLAPITEST>(model);
+            return model == null ? null : Mapper.Map<ApiEntity>(model);
         }
     }
 }

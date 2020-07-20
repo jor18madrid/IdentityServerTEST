@@ -6,12 +6,12 @@
 
 namespace IdentityServer4.EntityFramework.Entities
 {
-    public class ClientGrantType
+    public class ClienteTipoConcesionEntity
     {
-        public int Id { get; set; }
-        public string GrantType { get; set; }
+        public int ClienteTipoConcesionId { get; set; }
+        public string TipoConcesion { get; set; }
 
-        public int ClientId { get; set; }
-        public Clientes Client { get; set; }
+        public int ClienteId { get; set; }
+        public ClienteEntity Cliente { get; set; }
     }
 }

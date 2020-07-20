@@ -44,7 +44,7 @@ namespace IdentityServer4.EntityFramework.Services
         {
             var dbContext = _context.HttpContext.RequestServices.GetRequiredService<IConfigurationDbContext>();
 
-            var origins = dbContext.Clientes.SelectMany(x => x.AllowedCorsOrigins.Select(y => y.Origin)).AsNoTracking().ToList();
+            var origins = dbContext.Clientes.SelectMany(x => x.AllowedCorsOrigins.Select(y => y.Origen)).AsNoTracking().ToList();
 
             var distinctOrigins = origins.Where(x => x != null).Distinct();
 

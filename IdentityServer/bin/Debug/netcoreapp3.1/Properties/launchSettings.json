@@ -8,9 +8,6 @@
     }
   },
   "profiles": {
-    "IdentityServer": {
-      "commandName": "IISExpress"
-    },
     "IIS Express": {
       "commandName": "IISExpress",
       "environmentVariables": {

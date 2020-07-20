@@ -4,13 +4,14 @@
 
 #pragma warning disable 1591
 
+using System.ComponentModel.DataAnnotations;
+
 namespace IdentityServer4.EntityFramework.Entities
 {
-    public class ClientClaim
+    public class ClienteOrigenCruzadoEntity
     {
-        public int Id { get; set; }
-        public string Type { get; set; }
-        public string Value { get; set; }
+        public int ClienteOrigenCruzadoId { get; set; }
+        public string Origen { get; set; }
 
         public int ClienteId { get; set; }
         public ClienteEntity Cliente { get; set; }

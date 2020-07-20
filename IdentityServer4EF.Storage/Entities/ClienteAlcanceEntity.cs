@@ -4,14 +4,16 @@
 
 #pragma warning disable 1591
 
+using System.ComponentModel.DataAnnotations;
+
 namespace IdentityServer4.EntityFramework.Entities
 {
-    public class ClientScope
+    public class ClienteAlcanceEntity
     {
-        public int Id { get; set; }
-        public string Scope { get; set; }
+        public int ClienteAlcanceId { get; set; }
+        public string Alcance { get; set; }
 
-        public int ClientId { get; set; }
-        public Clientes Client { get; set; }
+        public int ClienteId { get; set; }
+        public ClienteEntity Cliente { get; set; }
     }
 }

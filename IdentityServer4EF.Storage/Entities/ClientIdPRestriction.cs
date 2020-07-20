@@ -12,6 +12,6 @@ namespace IdentityServer4.EntityFramework.Entities
         public string Provider { get; set; }
 
         public int ClientId { get; set; }
-        public Clientes Client { get; set; }
+        public ClienteEntity Client { get; set; }
     }
 }

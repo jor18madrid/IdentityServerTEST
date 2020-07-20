@@ -29,66 +29,65 @@ namespace IdentityServer4.EntityFramework.Extensions
         {
             if (!string.IsNullOrWhiteSpace(storeOptions.DefaultSchema)) modelBuilder.HasDefaultSchema(storeOptions.DefaultSchema);
 
-            modelBuilder.Entity<Clientes>(client =>
+            modelBuilder.Entity<ClienteEntity>(client =>
             {
-                client.ToTable(storeOptions.Client);
-                client.HasKey(x => x.Id);
+                client.ToTable(storeOptions.Client).HasKey(x => x.ClienteId);
 
-                client.Property(x => x.ClientId).HasMaxLength(200).IsRequired();
-                client.Property(x => x.ProtocolType).HasMaxLength(200).IsRequired();
-                client.Property(x => x.ClientName).HasMaxLength(200);
-                client.Property(x => x.ClientUri).HasMaxLength(2000);
+                client.Property(x => x.ClienteIdDescripcion).HasMaxLength(200).IsRequired();
+                client.Property(x => x.TipoProtocolo).HasMaxLength(200).IsRequired();
+                client.Property(x => x.NombreCiente).HasMaxLength(200);
+                client.Property(x => x.ClienteUrl).HasMaxLength(2000);
                 client.Property(x => x.LogoUri).HasMaxLength(2000);
-                client.Property(x => x.Description).HasMaxLength(1000);
+                client.Property(x => x.Descripcion).HasMaxLength(1000);
                 client.Property(x => x.FrontChannelLogoutUri).HasMaxLength(2000);
                 client.Property(x => x.BackChannelLogoutUri).HasMaxLength(2000);
                 client.Property(x => x.ClientClaimsPrefix).HasMaxLength(200);
                 client.Property(x => x.PairWiseSubjectSalt).HasMaxLength(200);
                 client.Property(x => x.UserCodeType).HasMaxLength(100);
 
-                client.HasIndex(x => x.ClientId).IsUnique();
+                client.HasIndex(x => x.ClienteIdDescripcion).IsUnique();
 
-                client.HasMany(x => x.AllowedGrantTypes).WithOne(x => x.Client).HasForeignKey(x=>x.ClientId).IsRequired().OnDelete(DeleteBehavior.Cascade);
-                client.HasMany(x => x.RedirectUris).WithOne(x => x.Client).HasForeignKey(x => x.ClientId).IsRequired().OnDelete(DeleteBehavior.Cascade);
-                client.HasMany(x => x.PostLogoutRedirectUris).WithOne(x => x.Client).HasForeignKey(x => x.ClientId).IsRequired().OnDelete(DeleteBehavior.Cascade);
-                client.HasMany(x => x.AllowedScopes).WithOne(x => x.Client).HasForeignKey(x => x.ClientId).IsRequired().OnDelete(DeleteBehavior.Cascade);
-                client.HasMany(x => x.ClientSecrets).WithOne(x => x.Client).HasForeignKey(x => x.ClientId).IsRequired().OnDelete(DeleteBehavior.Cascade);
+                client.HasMany(x => x.TiposConcesionesHabilitadas).WithOne(x => x.Cliente).HasForeignKey(x=>x.ClienteId).IsRequired().OnDelete(DeleteBehavior.Cascade);
+                client.HasMany(x => x.ClienteRedirigirUris).WithOne(x => x.Cliente).HasForeignKey(x => x.ClienteId).IsRequired().OnDelete(DeleteBehavior.Cascade);
+                client.HasMany(x => x.ClienteRedirigirCerrarSesionUris).WithOne(x => x.Cliente).HasForeignKey(x => x.ClienteId).IsRequired().OnDelete(DeleteBehavior.Cascade);
+                client.HasMany(x => x.AllowedScopes).WithOne(x => x.Cliente).HasForeignKey(x => x.ClienteId).IsRequired().OnDelete(DeleteBehavior.Cascade);
+                client.HasMany(x => x.ClienteSecretos).WithOne(x => x.Cliente).HasForeignKey(x => x.ClienteId).IsRequired().OnDelete(DeleteBehavior.Cascade);
                 //client.HasMany(x => x.Claims).WithOne(x => x.Client).HasForeignKey(x => x.ClientId).IsRequired().OnDelete(DeleteBehavior.Cascade);
                 //client.HasMany(x => x.IdentityProviderRestrictions).WithOne(x => x.Client).HasForeignKey(x => x.ClientId).IsRequired().OnDelete(DeleteBehavior.Cascade);
-                client.HasMany(x => x.AllowedCorsOrigins).WithOne(x => x.Client).HasForeignKey(x => x.ClientId).IsRequired().OnDelete(DeleteBehavior.Cascade);
+                client.HasMany(x => x.AllowedCorsOrigins).WithOne(x => x.Cliente).HasForeignKey(x => x.ClienteId).IsRequired().OnDelete(DeleteBehavior.Cascade);
                 //client.HasMany(x => x.Properties).WithOne(x => x.Client).HasForeignKey(x => x.ClientId).IsRequired().OnDelete(DeleteBehavior.Cascade);
             });
 
-            modelBuilder.Entity<ClientGrantType>(grantType =>
+            modelBuilder.Entity<ClienteTipoConcesionEntity>(grantType =>
             {
-                grantType.ToTable(storeOptions.ClientGrantType);
-                grantType.Property(x => x.GrantType).HasMaxLength(250).IsRequired();
+                grantType.ToTable(storeOptions.ClientGrantType).HasKey(x=>x.ClienteTipoConcesionId);
+                grantType.Property(x => x.TipoConcesion).HasMaxLength(250).IsRequired();
             });
 
-            modelBuilder.Entity<ClientRedirectUri>(redirectUri =>
+            modelBuilder.Entity<ClienteUrlRedirigirEntity>(redirectUri =>
             {
-                redirectUri.ToTable(storeOptions.ClientRedirectUri);
-                redirectUri.Property(x => x.RedirectUri).HasMaxLength(2000).IsRequired();
+                redirectUri.ToTable(storeOptions.ClientRedirectUri).HasKey(x => x.ClienteUrlRedirigirId);
+                redirectUri.Property(x => x.Url).HasMaxLength(2000).IsRequired();
             });
 
-            modelBuilder.Entity<ClientPostLogoutRedirectUri>(postLogoutRedirectUri =>
+            modelBuilder.Entity<ClienteUrlRedirigirCerrarSesionEntity>(postLogoutRedirectUri =>
             {
-                postLogoutRedirectUri.ToTable(storeOptions.ClientPostLogoutRedirectUri);
-                postLogoutRedirectUri.Property(x => x.PostLogoutRedirectUri).HasMaxLength(2000).IsRequired();
+                postLogoutRedirectUri.ToTable(storeOptions.ClientPostLogoutRedirectUri).HasKey(x => x.ClienteUrlRedirigirCerrarSesionId);
+                postLogoutRedirectUri.Property(x => x.Url).HasMaxLength(2000).IsRequired();
             });
 
-            modelBuilder.Entity<ClientScope>(scope =>
+            modelBuilder.Entity<ClienteAlcanceEntity>(scope =>
             {
-                scope.ToTable(storeOptions.ClientScopes);
-                scope.Property(x => x.Scope).HasMaxLength(200).IsRequired();
+                scope.ToTable(storeOptions.ClientScopes).HasKey(x => x.ClienteAlcanceId);
+                scope.Property(x => x.Alcance).HasMaxLength(200).IsRequired();
             });
 
-            modelBuilder.Entity<ClientSecret>(secret =>
+            modelBuilder.Entity<ClienteSecretoEntity>(secret =>
             {
-                secret.ToTable(storeOptions.ClientSecret);
-                secret.Property(x => x.Value).HasMaxLength(4000).IsRequired();
-                secret.Property(x => x.Type).HasMaxLength(250).IsRequired();
-                secret.Property(x => x.Description).HasMaxLength(2000);
+                secret.ToTable(storeOptions.ClientSecret).HasKey(x=>x.SecretoId);
+                secret.Property(x => x.Valor).HasMaxLength(4000).IsRequired();
+                secret.Property(x => x.Tipo).HasMaxLength(250).IsRequired();
+                secret.Property(x => x.Descripcion).HasMaxLength(2000);
             });
 
             //modelBuilder.Entity<ClientClaim>(claim =>
@@ -104,10 +103,10 @@ namespace IdentityServer4.EntityFramework.Extensions
             //    idPRestriction.Property(x => x.Provider).HasMaxLength(200).IsRequired();
             //});
 
-            modelBuilder.Entity<ClientCorsOrigin>(corsOrigin =>
+            modelBuilder.Entity<ClienteOrigenCruzadoEntity>(corsOrigin =>
             {
-                corsOrigin.ToTable(storeOptions.ClientCorsOrigin);
-                corsOrigin.Property(x => x.Origin).HasMaxLength(150).IsRequired();
+                corsOrigin.ToTable(storeOptions.ClientCorsOrigin).HasKey(x => x.ClienteOrigenCruzadoId);
+                corsOrigin.Property(x => x.Origen).HasMaxLength(150).IsRequired();
             });
 
             //modelBuilder.Entity<ClientProperty>(property =>
@@ -204,29 +203,29 @@ namespace IdentityServer4.EntityFramework.Extensions
 
 
 
-            modelBuilder.Entity<TBLAPITEST>(apiResource =>
+            modelBuilder.Entity<ApiEntity>(apiResource =>
             {
-                apiResource.ToTable(storeOptions.ApiResource).HasKey(x => x.APIID);
+                apiResource.ToTable(storeOptions.ApiResource).HasKey(x => x.ApiId);
 
-                apiResource.Property(x => x.NOMBRE).HasMaxLength(200).IsRequired();
-                apiResource.Property(x => x.NOMBREMOSTRAR).HasMaxLength(200);
-                apiResource.Property(x => x.DESCRIPCION).HasMaxLength(1000);
+                apiResource.Property(x => x.Nombre).HasMaxLength(200).IsRequired();
+                apiResource.Property(x => x.NombreMostrar).HasMaxLength(200);
+                apiResource.Property(x => x.Descripcion).HasMaxLength(1000);
 
-                apiResource.HasIndex(x => x.NOMBRE).IsUnique();
+                apiResource.HasIndex(x => x.Nombre).IsUnique();
 
-                apiResource.HasMany(x => x.SECRETS).WithOne(x => x.ApiResource).HasForeignKey(x => x.ApiResourceId).IsRequired().OnDelete(DeleteBehavior.Cascade);
-                apiResource.HasMany(x => x.SCOPES).WithOne(x => x.ApiResource).HasForeignKey(x => x.ApiResourceId).IsRequired().OnDelete(DeleteBehavior.Cascade);
+                apiResource.HasMany(x => x.Secretos).WithOne(x => x.Api).HasForeignKey(x => x.ApiId).IsRequired().OnDelete(DeleteBehavior.Cascade);
+                apiResource.HasMany(x => x.Alcances).WithOne(x => x.Api).HasForeignKey(x => x.ApiId).IsRequired().OnDelete(DeleteBehavior.Cascade);
                 //apiResource.HasMany(x => x.USERCLAIMS).WithOne(x => x.ApiResource).HasForeignKey(x => x.ApiResourceId).IsRequired().OnDelete(DeleteBehavior.Cascade);
                 //apiResource.HasMany(x => x.PROPIEDADES).WithOne(x => x.ApiResource).HasForeignKey(x => x.ApiResourceId).IsRequired().OnDelete(DeleteBehavior.Cascade);
             });
 
-            modelBuilder.Entity<ApiSecret>(apiSecret =>
+            modelBuilder.Entity<ApiSecretoEntity>(apiSecret =>
             {
-                apiSecret.ToTable(storeOptions.ApiSecret).HasKey(x => x.Id);
+                apiSecret.ToTable(storeOptions.ApiSecret).HasKey(x => x.SecretoId);
 
-                apiSecret.Property(x => x.Description).HasMaxLength(1000);
-                apiSecret.Property(x => x.Value).HasMaxLength(4000).IsRequired();
-                apiSecret.Property(x => x.Type).HasMaxLength(250).IsRequired();
+                apiSecret.Property(x => x.Descripcion).HasMaxLength(1000);
+                apiSecret.Property(x => x.Valor).HasMaxLength(4000).IsRequired();
+                apiSecret.Property(x => x.Tipo).HasMaxLength(250).IsRequired();
             });
 
             //modelBuilder.Entity<ApiResourceClaim>(apiClaim =>
@@ -235,15 +234,15 @@ namespace IdentityServer4.EntityFramework.Extensions
             //    apiClaim.Property(x => x.Type).HasMaxLength(200).IsRequired();
             //});
 
-            modelBuilder.Entity<ApiScope>(apiScope =>
+            modelBuilder.Entity<ApiAlcanceEntity>(apiScope =>
             {
-                apiScope.ToTable(storeOptions.ApiScope).HasKey(x => x.Id);
+                apiScope.ToTable(storeOptions.ApiScope).HasKey(x => x.ApiAlcanceId);
 
-                apiScope.Property(x => x.Name).HasMaxLength(200).IsRequired();
-                apiScope.Property(x => x.DisplayName).HasMaxLength(200);
-                apiScope.Property(x => x.Description).HasMaxLength(1000);
+                apiScope.Property(x => x.Nombre).HasMaxLength(200).IsRequired();
+                apiScope.Property(x => x.NombreMostrar).HasMaxLength(200);
+                apiScope.Property(x => x.Descripcion).HasMaxLength(1000);
 
-                apiScope.HasIndex(x => x.Name).IsUnique();
+                apiScope.HasIndex(x => x.Nombre).IsUnique();
 
                 //apiScope.HasMany(x => x.UserClaims).WithOne(x => x.ApiScope).HasForeignKey(x => x.ApiScopeId).IsRequired().OnDelete(DeleteBehavior.Cascade);
             });

@@ -45,17 +45,17 @@ namespace IdentityServer4.EntityFramework.Stores
         public Task<Client> FindClientByIdAsync(string clientId)
         {
             var client = _context.Clientes
-                .Include(x => x.AllowedGrantTypes)
-                .Include(x => x.RedirectUris)
-                .Include(x => x.PostLogoutRedirectUris)
+                .Include(x => x.TiposConcesionesHabilitadas)
+                .Include(x => x.ClienteRedirigirUris)
+                .Include(x => x.ClienteRedirigirCerrarSesionUris)
                 .Include(x => x.AllowedScopes)
-                .Include(x => x.ClientSecrets)
+                .Include(x => x.ClienteSecretos)
                 //.Include(x => x.Claims)
                 //.Include(x => x.IdentityProviderRestrictions)
                 .Include(x => x.AllowedCorsOrigins)
                 //.Include(x => x.Properties)
                 .AsNoTracking()
-                .FirstOrDefault(x => x.ClientId == clientId);
+                .FirstOrDefault(x => x.ClienteIdDescripcion == clientId);
             var model = client?.ToModel();
 
             _logger.LogDebug("{clientId} found in database: {clientIdFound}", clientId, model != null);

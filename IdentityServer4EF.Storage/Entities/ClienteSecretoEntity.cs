@@ -6,9 +6,9 @@
 
 namespace IdentityServer4.EntityFramework.Entities
 {
-    public class ClientSecret : Secret
+    public class ClienteSecretoEntity : SecretoEntity
     {
-        public int ClientId { get; set; }
-        public Clientes Client { get; set; }
+        public int ClienteId { get; set; }
+        public ClienteEntity Cliente { get; set; }
     }
 }

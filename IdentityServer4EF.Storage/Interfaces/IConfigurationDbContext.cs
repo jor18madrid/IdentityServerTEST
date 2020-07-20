@@ -21,7 +21,7 @@ namespace IdentityServer4.EntityFramework.Interfaces
         /// <value>
         /// The clients.
         /// </value>
-        DbSet<Clientes> Clientes { get; set; }
+        DbSet<ClienteEntity> Clientes { get; set; }
         
         /// <summary>
         /// Gets or sets the identity resources.
@@ -37,7 +37,7 @@ namespace IdentityServer4.EntityFramework.Interfaces
         /// <value>
         /// The API resources.
         /// </value>
-        DbSet<TBLAPITEST> ApiResources { get; set; }
+        DbSet<ApiEntity> ApiResources { get; set; }
 
         /// <summary>
         /// Saves the changes.

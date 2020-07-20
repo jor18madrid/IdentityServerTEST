@@ -100,21 +100,21 @@ namespace IdentityServer4.EntityFramework.Options
         /// <value>
         /// The type of the client grant.
         /// </value>
-        public TableConfiguration ClientGrantType { get; set; } = new TableConfiguration("TBLTIPOSCONCESIONES");
+        public TableConfiguration ClientGrantType { get; set; } = new TableConfiguration("TBLCLIENTETIPOSCONCESIONES");
         /// <summary>
         /// Gets or sets the client redirect URI table configuration.
         /// </summary>
         /// <value>
         /// The client redirect URI.
         /// </value>
-        public TableConfiguration ClientRedirectUri { get; set; } = new TableConfiguration("TBLCLIENTEREDIRIGIRURL");
+        public TableConfiguration ClientRedirectUri { get; set; } = new TableConfiguration("TBLCLIENTEURLREDIRIGIR");
         /// <summary>
         /// Gets or sets the client post logout redirect URI table configuration.
         /// </summary>
         /// <value>
         /// The client post logout redirect URI.
         /// </value>
-        public TableConfiguration ClientPostLogoutRedirectUri { get; set; } = new TableConfiguration("TBLCLIENTEREDIRIGIRCERRARSESIONURL");
+        public TableConfiguration ClientPostLogoutRedirectUri { get; set; } = new TableConfiguration("TBLCLIENTEURLREDIRIGIRCERRARSESION");
         /// <summary>
         /// Gets or sets the client scopes table configuration.
         /// </summary>

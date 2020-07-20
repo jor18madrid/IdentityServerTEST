@@ -10,33 +10,33 @@ using System.Collections.Generic;
 
 namespace IdentityServer4.EntityFramework.Entities
 {
-    public class Clientes
+    public class ClienteEntity
     {
-        public int Id { get; set; }
-        public bool Enabled { get; set; } = true;
-        public string ClientId { get; set; }
-        public string ProtocolType { get; set; } = "oidc";
-        public List<ClientSecret> ClientSecrets { get; set; }
-        public bool RequireClientSecret { get; set; } = true;
-        public string ClientName { get; set; }
-        public string Description { get; set; }
-        public string ClientUri { get; set; }
+        public int ClienteId { get; set; }
+        public bool Habilitar { get; set; } = true;
+        public string ClienteIdDescripcion { get; set; }
+        public string TipoProtocolo { get; set; } = "oidc";
+        public List<ClienteSecretoEntity> ClienteSecretos { get; set; }
+        public bool RequiereSecreto { get; set; } = true;
+        public string NombreCiente { get; set; }
+        public string Descripcion { get; set; }
+        public string ClienteUrl { get; set; }
         public string LogoUri { get; set; }
-        public bool RequireConsent { get; set; } = true;
-        public bool AllowRememberConsent { get; set; } = true;
+        public bool RequiereConsentimiento { get; set; } = true;
+        public bool PermitirRecordarConsentimiento { get; set; } = true;
         public bool AlwaysIncludeUserClaimsInIdToken { get; set; }
-        public List<ClientGrantType> AllowedGrantTypes { get; set; }
-        public bool RequirePkce { get; set; }
+        public List<ClienteTipoConcesionEntity> TiposConcesionesHabilitadas { get; set; }
+        public bool RequierePkce { get; set; }
         public bool AllowPlainTextPkce { get; set; }
-        public bool AllowAccessTokensViaBrowser { get; set; }
-        public List<ClientRedirectUri> RedirectUris { get; set; }
-        public List<ClientPostLogoutRedirectUri> PostLogoutRedirectUris { get; set; }
+        public bool HabilitarTokenDesdeNavegador { get; set; }
+        public List<ClienteUrlRedirigirEntity> ClienteRedirigirUris { get; set; }
+        public List<ClienteUrlRedirigirCerrarSesionEntity> ClienteRedirigirCerrarSesionUris { get; set; }
         public string FrontChannelLogoutUri { get; set; }
         public bool FrontChannelLogoutSessionRequired { get; set; } = true;
         public string BackChannelLogoutUri { get; set; }
         public bool BackChannelLogoutSessionRequired { get; set; } = true;
         public bool AllowOfflineAccess { get; set; }
-        public List<ClientScope> AllowedScopes { get; set; }
+        public List<ClienteAlcanceEntity> AllowedScopes { get; set; }
         public int IdentityTokenLifetime { get; set; } = 300;
         public int AccessTokenLifetime { get; set; } = 3600;
         public int AuthorizationCodeLifetime { get; set; } = 300;
@@ -54,7 +54,7 @@ namespace IdentityServer4.EntityFramework.Entities
         public bool AlwaysSendClientClaims { get; set; }
         public string ClientClaimsPrefix { get; set; } = "client_";
         public string PairWiseSubjectSalt { get; set; }
-        public List<ClientCorsOrigin> AllowedCorsOrigins { get; set; }
+        public List<ClienteOrigenCruzadoEntity> AllowedCorsOrigins { get; set; }
         //public List<ClientProperty> Properties { get; set; }
         public DateTime Created { get; set; } = DateTime.UtcNow;
         public DateTime? Updated { get; set; }

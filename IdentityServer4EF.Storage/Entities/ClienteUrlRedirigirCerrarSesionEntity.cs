@@ -6,9 +6,12 @@
 
 namespace IdentityServer4.EntityFramework.Entities
 {
-    public class ApiSecret : Secret
+    public class ClienteUrlRedirigirCerrarSesionEntity
     {
-        public int ApiResourceId { get; set; }
-        public TBLAPITEST ApiResource { get; set; }
+        public int ClienteUrlRedirigirCerrarSesionId { get; set; }
+        public string Url { get; set; }
+
+        public int ClienteId { get; set; }
+        public ClienteEntity Cliente { get; set; }
     }
 }

@@ -9,6 +9,6 @@ namespace IdentityServer4.EntityFramework.Entities
     public class ClientProperty : Property
     {
         public int ClientId { get; set; }
-        public Clientes Client { get; set; }
+        public ClienteEntity Client { get; set; }
     }
 }

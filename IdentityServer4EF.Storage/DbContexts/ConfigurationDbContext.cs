@@ -59,7 +59,7 @@ namespace IdentityServer4.EntityFramework.DbContexts
         /// <value>
         /// The clients.
         /// </value>
-        public DbSet<Clientes> Clientes { get; set; }
+        public DbSet<ClienteEntity> Clientes { get; set; }
         /// <summary>
         /// Gets or sets the identity resources.
         /// </summary>
@@ -73,7 +73,7 @@ namespace IdentityServer4.EntityFramework.DbContexts
         /// <value>
         /// The API resources.
         /// </value>
-        public DbSet<TBLAPITEST> ApiResources { get; set; }
+        public DbSet<ApiEntity> ApiResources { get; set; }
 
         /// <summary>
         /// Saves the changes.

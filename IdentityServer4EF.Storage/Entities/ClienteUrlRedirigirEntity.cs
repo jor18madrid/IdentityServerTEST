@@ -6,12 +6,12 @@
 
 namespace IdentityServer4.EntityFramework.Entities
 {
-    public class ClientCorsOrigin
+    public class ClienteUrlRedirigirEntity
     {
-        public int Id { get; set; }
-        public string Origin { get; set; }
+        public int ClienteUrlRedirigirId { get; set; }
+        public string Url { get; set; }
 
-        public int ClientId { get; set; }
-        public Clientes Client { get; set; }
+        public int ClienteId { get; set; }
+        public ClienteEntity Cliente { get; set; }
     }
 }

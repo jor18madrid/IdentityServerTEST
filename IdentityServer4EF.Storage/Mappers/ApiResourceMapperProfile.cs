@@ -21,9 +21,9 @@ namespace IdentityServer4.EntityFramework.Mappers
             CreateMap<Entities.ApiResourceProperty, KeyValuePair<string, string>>()
                 .ReverseMap();
 
-            CreateMap<Entities.TBLAPITEST, Models.ApiResource>(MemberList.Destination)
+            CreateMap<Entities.ApiEntity, Models.ApiResource>(MemberList.Destination)
                 .ConstructUsing(src => new Models.ApiResource())
-                .ForMember(x => x.ApiSecrets, opts => opts.MapFrom(x => x.SECRETS))
+                .ForMember(x => x.ApiSecrets, opts => opts.MapFrom(x => x.Secretos))
                 .ReverseMap();
 
             CreateMap<Entities.ApiResourceClaim, string>()
@@ -31,11 +31,11 @@ namespace IdentityServer4.EntityFramework.Mappers
                 .ReverseMap()
                 .ForMember(dest => dest.Type, opt => opt.MapFrom(src => src));
 
-            CreateMap<Entities.ApiSecret, Models.Secret>(MemberList.Destination)
+            CreateMap<Entities.ApiSecretoEntity, Models.Secret>(MemberList.Destination)
                 .ForMember(dest => dest.Type, opt => opt.Condition(srs => srs != null))
                 .ReverseMap();
 
-            CreateMap<Entities.ApiScope, Models.Scope>(MemberList.Destination)
+            CreateMap<Entities.ApiAlcanceEntity, Models.Scope>(MemberList.Destination)
                 .ConstructUsing(src => new Models.Scope())
                 .ReverseMap();
 

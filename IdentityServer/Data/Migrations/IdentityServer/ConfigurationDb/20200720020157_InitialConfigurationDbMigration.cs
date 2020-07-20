@@ -12,42 +12,42 @@ namespace IdentityServer.Data.Migrations.IdentityServer.ConfigurationDb
                 name: "TBLAPIS",
                 columns: table => new
                 {
-                    APIID = table.Column<int>(nullable: false)
+                    ApiId = table.Column<int>(nullable: false)
                         .Annotation("Oracle:ValueGenerationStrategy", OracleValueGenerationStrategy.IdentityColumn),
-                    HABILITAR = table.Column<bool>(nullable: false),
-                    NOMBRE = table.Column<string>(maxLength: 200, nullable: false),
-                    NOMBREMOSTRAR = table.Column<string>(maxLength: 200, nullable: true),
-                    DESCRIPCION = table.Column<string>(maxLength: 1000, nullable: true),
+                    Habilitar = table.Column<bool>(nullable: false),
+                    Nombre = table.Column<string>(maxLength: 200, nullable: false),
+                    NombreMostrar = table.Column<string>(maxLength: 200, nullable: true),
+                    Descripcion = table.Column<string>(maxLength: 1000, nullable: true),
                     FECHACREACION = table.Column<DateTime>(nullable: false),
                     FECHAMODIFICACION = table.Column<DateTime>(nullable: true),
-                    FECHAULTIMOACCESO = table.Column<DateTime>(nullable: true),
-                    NOEDITABLE = table.Column<bool>(nullable: false)
+                    FechaUltimoAcceso = table.Column<DateTime>(nullable: true),
+                    NoEditable = table.Column<bool>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_TBLAPIS", x => x.APIID);
+                    table.PrimaryKey("PK_TBLAPIS", x => x.ApiId);
                 });
 
             migrationBuilder.CreateTable(
                 name: "TBLCLIENTES",
                 columns: table => new
                 {
-                    Id = table.Column<int>(nullable: false)
+                    ClienteId = table.Column<int>(nullable: false)
                         .Annotation("Oracle:ValueGenerationStrategy", OracleValueGenerationStrategy.IdentityColumn),
-                    Enabled = table.Column<bool>(nullable: false),
-                    ClientId = table.Column<string>(maxLength: 200, nullable: false),
-                    ProtocolType = table.Column<string>(maxLength: 200, nullable: false),
-                    RequireClientSecret = table.Column<bool>(nullable: false),
-                    ClientName = table.Column<string>(maxLength: 200, nullable: true),
-                    Description = table.Column<string>(maxLength: 1000, nullable: true),
-                    ClientUri = table.Column<string>(maxLength: 2000, nullable: true),
+                    Habilitar = table.Column<bool>(nullable: false),
+                    ClienteIdDescripcion = table.Column<string>(maxLength: 200, nullable: false),
+                    TipoProtocolo = table.Column<string>(maxLength: 200, nullable: false),
+                    RequiereSecreto = table.Column<bool>(nullable: false),
+                    NombreCiente = table.Column<string>(maxLength: 200, nullable: true),
+                    Descripcion = table.Column<string>(maxLength: 1000, nullable: true),
+                    ClienteUrl = table.Column<string>(maxLength: 2000, nullable: true),
                     LogoUri = table.Column<string>(maxLength: 2000, nullable: true),
-                    RequireConsent = table.Column<bool>(nullable: false),
-                    AllowRememberConsent = table.Column<bool>(nullable: false),
+                    RequiereConsentimiento = table.Column<bool>(nullable: false),
+                    PermitirRecordarConsentimiento = table.Column<bool>(nullable: false),
                     AlwaysIncludeUserClaimsInIdToken = table.Column<bool>(nullable: false),
-                    RequirePkce = table.Column<bool>(nullable: false),
+                    RequierePkce = table.Column<bool>(nullable: false),
                     AllowPlainTextPkce = table.Column<bool>(nullable: false),
-                    AllowAccessTokensViaBrowser = table.Column<bool>(nullable: false),
+                    HabilitarTokenDesdeNavegador = table.Column<bool>(nullable: false),
                     FrontChannelLogoutUri = table.Column<string>(maxLength: 2000, nullable: true),
                     FrontChannelLogoutSessionRequired = table.Column<bool>(nullable: false),
                     BackChannelLogoutUri = table.Column<string>(maxLength: 2000, nullable: true),
@@ -78,31 +78,31 @@ namespace IdentityServer.Data.Migrations.IdentityServer.ConfigurationDb
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_TBLCLIENTES", x => x.Id);
+                    table.PrimaryKey("PK_TBLCLIENTES", x => x.ClienteId);
                 });
 
             migrationBuilder.CreateTable(
                 name: "TBLAPIALCANCES",
                 columns: table => new
                 {
-                    Id = table.Column<int>(nullable: false)
+                    ApiAlcanceId = table.Column<int>(nullable: false)
                         .Annotation("Oracle:ValueGenerationStrategy", OracleValueGenerationStrategy.IdentityColumn),
-                    Name = table.Column<string>(maxLength: 200, nullable: false),
-                    DisplayName = table.Column<string>(maxLength: 200, nullable: true),
-                    Description = table.Column<string>(maxLength: 1000, nullable: true),
-                    Required = table.Column<bool>(nullable: false),
-                    Emphasize = table.Column<bool>(nullable: false),
-                    ShowInDiscoveryDocument = table.Column<bool>(nullable: false),
-                    ApiResourceId = table.Column<int>(nullable: false)
+                    Nombre = table.Column<string>(maxLength: 200, nullable: false),
+                    NombreMostrar = table.Column<string>(maxLength: 200, nullable: true),
+                    Descripcion = table.Column<string>(maxLength: 1000, nullable: true),
+                    Requerido = table.Column<bool>(nullable: false),
+                    Enfatizar = table.Column<bool>(nullable: false),
+                    MostrarDocumentoDescubrimiento = table.Column<bool>(nullable: false),
+                    ApiId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_TBLAPIALCANCES", x => x.Id);
+                    table.PrimaryKey("PK_TBLAPIALCANCES", x => x.ApiAlcanceId);
                     table.ForeignKey(
-                        name: "FK_TBLAPIALCANCES_TBLAPIS_ApiResourceId",
-                        column: x => x.ApiResourceId,
+                        name: "FK_TBLAPIALCANCES_TBLAPIS_ApiId",
+                        column: x => x.ApiId,
                         principalTable: "TBLAPIS",
-                        principalColumn: "APIID",
+                        principalColumn: "ApiId",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -110,23 +110,23 @@ namespace IdentityServer.Data.Migrations.IdentityServer.ConfigurationDb
                 name: "TBLAPISECRETOS",
                 columns: table => new
                 {
-                    Id = table.Column<int>(nullable: false)
+                    SecretoId = table.Column<int>(nullable: false)
                         .Annotation("Oracle:ValueGenerationStrategy", OracleValueGenerationStrategy.IdentityColumn),
-                    Description = table.Column<string>(maxLength: 1000, nullable: true),
-                    Value = table.Column<string>(maxLength: 4000, nullable: false),
-                    Expiration = table.Column<DateTime>(nullable: true),
-                    Type = table.Column<string>(maxLength: 250, nullable: false),
+                    Descripcion = table.Column<string>(maxLength: 1000, nullable: true),
+                    Valor = table.Column<string>(maxLength: 4000, nullable: false),
+                    FechaExpiracion = table.Column<DateTime>(nullable: true),
+                    Tipo = table.Column<string>(maxLength: 250, nullable: false),
                     Created = table.Column<DateTime>(nullable: false),
-                    ApiResourceId = table.Column<int>(nullable: false)
+                    ApiId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_TBLAPISECRETOS", x => x.Id);
+                    table.PrimaryKey("PK_TBLAPISECRETOS", x => x.SecretoId);
                     table.ForeignKey(
-                        name: "FK_TBLAPISECRETOS_TBLAPIS_ApiResourceId",
-                        column: x => x.ApiResourceId,
+                        name: "FK_TBLAPISECRETOS_TBLAPIS_ApiId",
+                        column: x => x.ApiId,
                         principalTable: "TBLAPIS",
-                        principalColumn: "APIID",
+                        principalColumn: "ApiId",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -134,19 +134,19 @@ namespace IdentityServer.Data.Migrations.IdentityServer.ConfigurationDb
                 name: "TBLCLIENTEALCANCES",
                 columns: table => new
                 {
-                    Id = table.Column<int>(nullable: false)
+                    ClienteAlcanceId = table.Column<int>(nullable: false)
                         .Annotation("Oracle:ValueGenerationStrategy", OracleValueGenerationStrategy.IdentityColumn),
-                    Scope = table.Column<string>(maxLength: 200, nullable: false),
-                    ClientId = table.Column<int>(nullable: false)
+                    Alcance = table.Column<string>(maxLength: 200, nullable: false),
+                    ClienteId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_TBLCLIENTEALCANCES", x => x.Id);
+                    table.PrimaryKey("PK_TBLCLIENTEALCANCES", x => x.ClienteAlcanceId);
                     table.ForeignKey(
-                        name: "FK_TBLCLIENTEALCANCES_TBLCLIENTES_ClientId",
-                        column: x => x.ClientId,
+                        name: "FK_TBLCLIENTEALCANCES_TBLCLIENTES_ClienteId",
+                        column: x => x.ClienteId,
                         principalTable: "TBLCLIENTES",
-                        principalColumn: "Id",
+                        principalColumn: "ClienteId",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -154,59 +154,19 @@ namespace IdentityServer.Data.Migrations.IdentityServer.ConfigurationDb
                 name: "TBLCLIENTEORIGENCRUZADO",
                 columns: table => new
                 {
-                    Id = table.Column<int>(nullable: false)
+                    ClienteOrigenCruzadoId = table.Column<int>(nullable: false)
                         .Annotation("Oracle:ValueGenerationStrategy", OracleValueGenerationStrategy.IdentityColumn),
-                    Origin = table.Column<string>(maxLength: 150, nullable: false),
-                    ClientId = table.Column<int>(nullable: false)
+                    Origen = table.Column<string>(maxLength: 150, nullable: false),
+                    ClienteId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_TBLCLIENTEORIGENCRUZADO", x => x.Id);
+                    table.PrimaryKey("PK_TBLCLIENTEORIGENCRUZADO", x => x.ClienteOrigenCruzadoId);
                     table.ForeignKey(
-                        name: "FK_TBLCLIENTEORIGENCRUZADO_TBLCLIENTES_ClientId",
-                        column: x => x.ClientId,
+                        name: "FK_TBLCLIENTEORIGENCRUZADO_TBLCLIENTES_ClienteId",
+                        column: x => x.ClienteId,
                         principalTable: "TBLCLIENTES",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "TBLCLIENTEREDIRIGIRCERRARSESIONURL",
-                columns: table => new
-                {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("Oracle:ValueGenerationStrategy", OracleValueGenerationStrategy.IdentityColumn),
-                    PostLogoutRedirectUri = table.Column<string>(maxLength: 2000, nullable: false),
-                    ClientId = table.Column<int>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_TBLCLIENTEREDIRIGIRCERRARSESIONURL", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_TBLCLIENTEREDIRIGIRCERRARSESIONURL_TBLCLIENTES_ClientId",
-                        column: x => x.ClientId,
-                        principalTable: "TBLCLIENTES",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "TBLCLIENTEREDIRIGIRURL",
-                columns: table => new
-                {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("Oracle:ValueGenerationStrategy", OracleValueGenerationStrategy.IdentityColumn),
-                    RedirectUri = table.Column<string>(maxLength: 2000, nullable: false),
-                    ClientId = table.Column<int>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_TBLCLIENTEREDIRIGIRURL", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_TBLCLIENTEREDIRIGIRURL_TBLCLIENTES_ClientId",
-                        column: x => x.ClientId,
-                        principalTable: "TBLCLIENTES",
-                        principalColumn: "Id",
+                        principalColumn: "ClienteId",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -214,103 +174,143 @@ namespace IdentityServer.Data.Migrations.IdentityServer.ConfigurationDb
                 name: "TBLCLIENTESECRETOS",
                 columns: table => new
                 {
-                    Id = table.Column<int>(nullable: false)
+                    SecretoId = table.Column<int>(nullable: false)
                         .Annotation("Oracle:ValueGenerationStrategy", OracleValueGenerationStrategy.IdentityColumn),
-                    Description = table.Column<string>(maxLength: 2000, nullable: true),
-                    Value = table.Column<string>(maxLength: 4000, nullable: false),
-                    Expiration = table.Column<DateTime>(nullable: true),
-                    Type = table.Column<string>(maxLength: 250, nullable: false),
+                    Descripcion = table.Column<string>(maxLength: 2000, nullable: true),
+                    Valor = table.Column<string>(maxLength: 4000, nullable: false),
+                    FechaExpiracion = table.Column<DateTime>(nullable: true),
+                    Tipo = table.Column<string>(maxLength: 250, nullable: false),
                     Created = table.Column<DateTime>(nullable: false),
-                    ClientId = table.Column<int>(nullable: false)
+                    ClienteId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_TBLCLIENTESECRETOS", x => x.Id);
+                    table.PrimaryKey("PK_TBLCLIENTESECRETOS", x => x.SecretoId);
                     table.ForeignKey(
-                        name: "FK_TBLCLIENTESECRETOS_TBLCLIENTES_ClientId",
-                        column: x => x.ClientId,
+                        name: "FK_TBLCLIENTESECRETOS_TBLCLIENTES_ClienteId",
+                        column: x => x.ClienteId,
                         principalTable: "TBLCLIENTES",
-                        principalColumn: "Id",
+                        principalColumn: "ClienteId",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
-                name: "TBLTIPOSCONCESIONES",
+                name: "TBLCLIENTETIPOSCONCESIONES",
                 columns: table => new
                 {
-                    Id = table.Column<int>(nullable: false)
+                    ClienteTipoConcesionId = table.Column<int>(nullable: false)
                         .Annotation("Oracle:ValueGenerationStrategy", OracleValueGenerationStrategy.IdentityColumn),
-                    GrantType = table.Column<string>(maxLength: 250, nullable: false),
-                    ClientId = table.Column<int>(nullable: false)
+                    TipoConcesion = table.Column<string>(maxLength: 250, nullable: false),
+                    ClienteId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_TBLTIPOSCONCESIONES", x => x.Id);
+                    table.PrimaryKey("PK_TBLCLIENTETIPOSCONCESIONES", x => x.ClienteTipoConcesionId);
                     table.ForeignKey(
-                        name: "FK_TBLTIPOSCONCESIONES_TBLCLIENTES_ClientId",
-                        column: x => x.ClientId,
+                        name: "FK_TBLCLIENTETIPOSCONCESIONES_TBLCLIENTES_ClienteId",
+                        column: x => x.ClienteId,
                         principalTable: "TBLCLIENTES",
-                        principalColumn: "Id",
+                        principalColumn: "ClienteId",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "TBLCLIENTEURLREDIRIGIR",
+                columns: table => new
+                {
+                    ClienteUrlRedirigirId = table.Column<int>(nullable: false)
+                        .Annotation("Oracle:ValueGenerationStrategy", OracleValueGenerationStrategy.IdentityColumn),
+                    Url = table.Column<string>(maxLength: 2000, nullable: false),
+                    ClienteId = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_TBLCLIENTEURLREDIRIGIR", x => x.ClienteUrlRedirigirId);
+                    table.ForeignKey(
+                        name: "FK_TBLCLIENTEURLREDIRIGIR_TBLCLIENTES_ClienteId",
+                        column: x => x.ClienteId,
+                        principalTable: "TBLCLIENTES",
+                        principalColumn: "ClienteId",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "TBLCLIENTEURLREDIRIGIRCERRARSESION",
+                columns: table => new
+                {
+                    ClienteUrlRedirigirCerrarSesionId = table.Column<int>(nullable: false)
+                        .Annotation("Oracle:ValueGenerationStrategy", OracleValueGenerationStrategy.IdentityColumn),
+                    Url = table.Column<string>(maxLength: 2000, nullable: false),
+                    ClienteId = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_TBLCLIENTEURLREDIRIGIRCERRARSESION", x => x.ClienteUrlRedirigirCerrarSesionId);
+                    table.ForeignKey(
+                        name: "FK_TBLCLIENTEURLREDIRIGIRCERRARSESION_TBLCLIENTES_ClienteId",
+                        column: x => x.ClienteId,
+                        principalTable: "TBLCLIENTES",
+                        principalColumn: "ClienteId",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_TBLAPIALCANCES_ApiResourceId",
+                name: "IX_TBLAPIALCANCES_ApiId",
                 table: "TBLAPIALCANCES",
-                column: "ApiResourceId");
+                column: "ApiId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_TBLAPIALCANCES_Name",
+                name: "IX_TBLAPIALCANCES_Nombre",
                 table: "TBLAPIALCANCES",
-                column: "Name",
+                column: "Nombre",
                 unique: true);
 
             migrationBuilder.CreateIndex(
-                name: "IX_TBLAPIS_NOMBRE",
+                name: "IX_TBLAPIS_Nombre",
                 table: "TBLAPIS",
-                column: "NOMBRE",
+                column: "Nombre",
                 unique: true);
 
             migrationBuilder.CreateIndex(
-                name: "IX_TBLAPISECRETOS_ApiResourceId",
+                name: "IX_TBLAPISECRETOS_ApiId",
                 table: "TBLAPISECRETOS",
-                column: "ApiResourceId");
+                column: "ApiId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_TBLCLIENTEALCANCES_ClientId",
+                name: "IX_TBLCLIENTEALCANCES_ClienteId",
                 table: "TBLCLIENTEALCANCES",
-                column: "ClientId");
+                column: "ClienteId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_TBLCLIENTEORIGENCRUZADO_ClientId",
+                name: "IX_TBLCLIENTEORIGENCRUZADO_ClienteId",
                 table: "TBLCLIENTEORIGENCRUZADO",
-                column: "ClientId");
+                column: "ClienteId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_TBLCLIENTEREDIRIGIRCERRARSESIONURL_ClientId",
-                table: "TBLCLIENTEREDIRIGIRCERRARSESIONURL",
-                column: "ClientId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_TBLCLIENTEREDIRIGIRURL_ClientId",
-                table: "TBLCLIENTEREDIRIGIRURL",
-                column: "ClientId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_TBLCLIENTES_ClientId",
+                name: "IX_TBLCLIENTES_ClienteIdDescripcion",
                 table: "TBLCLIENTES",
-                column: "ClientId",
+                column: "ClienteIdDescripcion",
                 unique: true);
 
             migrationBuilder.CreateIndex(
-                name: "IX_TBLCLIENTESECRETOS_ClientId",
+                name: "IX_TBLCLIENTESECRETOS_ClienteId",
                 table: "TBLCLIENTESECRETOS",
-                column: "ClientId");
+                column: "ClienteId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_TBLTIPOSCONCESIONES_ClientId",
-                table: "TBLTIPOSCONCESIONES",
-                column: "ClientId");
+                name: "IX_TBLCLIENTETIPOSCONCESIONES_ClienteId",
+                table: "TBLCLIENTETIPOSCONCESIONES",
+                column: "ClienteId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_TBLCLIENTEURLREDIRIGIR_ClienteId",
+                table: "TBLCLIENTEURLREDIRIGIR",
+                column: "ClienteId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_TBLCLIENTEURLREDIRIGIRCERRARSESION_ClienteId",
+                table: "TBLCLIENTEURLREDIRIGIRCERRARSESION",
+                column: "ClienteId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -328,16 +328,16 @@ namespace IdentityServer.Data.Migrations.IdentityServer.ConfigurationDb
                 name: "TBLCLIENTEORIGENCRUZADO");
 
             migrationBuilder.DropTable(
-                name: "TBLCLIENTEREDIRIGIRCERRARSESIONURL");
-
-            migrationBuilder.DropTable(
-                name: "TBLCLIENTEREDIRIGIRURL");
-
-            migrationBuilder.DropTable(
                 name: "TBLCLIENTESECRETOS");
 
             migrationBuilder.DropTable(
-                name: "TBLTIPOSCONCESIONES");
+                name: "TBLCLIENTETIPOSCONCESIONES");
+
+            migrationBuilder.DropTable(
+                name: "TBLCLIENTEURLREDIRIGIR");
+
+            migrationBuilder.DropTable(
+                name: "TBLCLIENTEURLREDIRIGIRCERRARSESION");
 
             migrationBuilder.DropTable(
                 name: "TBLAPIS");
